@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.shashank.platform.furnitureecommerceappui">
+    package="com.pulkit.platform.furnitureecommerceappui">
+
+    <!-- Required permission for AR and camera access -->
+    <uses-permission android:name="android.permission.CAMERA"/>
+
+    <!-- Specifies that the app uses AR features and the camera -->
+    <uses-feature android:name="android.hardware.camera.ar" android:required="false"/>
+
 
     <application
         android:allowBackup="true"
@@ -11,42 +18,71 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
+
         <activity
-            android:name=".Main5Activity"
+            android:name="com.pulkit.platform.furnitureecommerceappui.Main5Activity"
             android:label=""
             android:screenOrientation="portrait"
             android:theme="@style/MyAppTheme"
-            android:windowSoftInputMode="stateHidden|adjustPan"/>
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
         <activity
-            android:name=".Main4Activity"
+            android:name="com.pulkit.platform.furnitureecommerceappui.Main4Activity"
             android:label=""
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustPan" />
+
         <activity
-            android:name=".Main3Activity"
+            android:name="com.pulkit.platform.furnitureecommerceappui.Main3Activity"
             android:label=""
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustPan" />
+
         <activity
-            android:name=".Main2Activity"
+            android:name="com.pulkit.platform.furnitureecommerceappui.Main2Activity"
             android:label=""
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <!-- Main Activity with android:exported attribute -->
         <activity
-            android:name=".MainActivity"
+            android:name="com.pulkit.platform.furnitureecommerceappui.MainActivity"
             android:label=""
             android:screenOrientation="portrait"
             android:theme="@style/MyAppTheme"
-            android:windowSoftInputMode="stateHidden|adjustPan">
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:exported="true"> <!-- Added android:exported="true" -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-    </application>
 
+        <!-- AR View Activity -->
+        <activity
+            android:name=".ARViewActivity"
+            android:label="AR View"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <!-- Forget Password and Register for new user -->
+        <activity
+            android:name=".RegisterActivity"
+            android:label="Register"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".ForgetPasswordActivity"
+            android:label="Forgot Password"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+    </application>
 </manifest>

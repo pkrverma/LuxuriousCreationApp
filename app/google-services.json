@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1058953721454",
+    "project_id": "luxurious-creation",
+    "storage_bucket": "luxurious-creation.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1058953721454:android:406d251ad7396afb0e987f",
+        "android_client_info": {
+          "package_name": "com.pulkit.platform.furnitureecommerceappui"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCEUW04iPFXmSeXGXBd_xcsCCbO92qZ-P4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

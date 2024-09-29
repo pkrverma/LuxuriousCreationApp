@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,11 +6,10 @@
     android:background="#ffffff"
     tools:context=".MainActivity">
 
-
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#8793eb"
+        android:background="@color/colorSecondary"
         android:paddingTop="24dp"
         android:theme="@style/AppTheme.AppBarOverlay"
         app:elevation="0dp">
@@ -27,13 +25,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:src="@drawable/ic_keyboard_arrow_left_white_24dp" />
 
             </RelativeLayout>
 
@@ -58,30 +49,30 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="250dp"
-                    android:background="#8793eb"
+                    android:background="@color/colorSecondary"
                     android:orientation="vertical">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginBottom="16dp"
-                        android:fontFamily="@font/calibri"
-                        android:text="Your Future"
+                        android:layout_marginBottom="8dp"
+                        android:fontFamily="@font/allura"
+                        android:text="@string/app_name"
                         android:textAlignment="center"
-                        android:textColor="#FFFFFF"
-                        android:textSize="22sp" />
+                        android:textColor="#ffffff"
+                        android:textSize="50sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
                         android:layout_marginBottom="16dp"
-                        android:fontFamily="@font/calibri"
-                        android:text="Furniture"
+                        android:fontFamily="@font/allura"
+                        android:text="@string/app_line"
                         android:textAlignment="center"
-                        android:textColor="#FFFFFF"
-                        android:textSize="36sp"
-                        android:textStyle="bold" />
+                        android:textColor="#ffffcf"
+                        android:textSize="18sp" />
 
                     <View
                         android:layout_width="80dp"
@@ -109,17 +100,19 @@
                         android:layout_marginBottom="16dp"
                         android:orientation="vertical">
 
+                        <!-- Login Heading -->
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="36dp"
                             android:layout_marginBottom="24dp"
-                            android:fontFamily="@font/calibri"
-                            android:text="Login First"
+                            android:fontFamily="@font/lora"
+                            android:text="@string/login"
                             android:textAlignment="center"
                             android:textColor="#000000"
                             android:textSize="24sp" />
 
+                        <!-- Email Input Field -->
                         <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -127,18 +120,20 @@
                             android:textColorHint="#FFB3B3B3">
 
                             <EditText
+                                android:id="@+id/username"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:drawableStart="@drawable/ic_person_gray_24dp"
                                 android:drawablePadding="16dp"
-                                android:fontFamily="@font/calibri"
-                                android:hint="Username"
+                                android:fontFamily="@font/lora"
+                                android:hint="@string/email"
                                 android:inputType="text"
                                 android:maxLines="1"
                                 android:textColor="@android:color/black"
                                 android:textSize="16sp" />
                         </com.google.android.material.textfield.TextInputLayout>
 
+                        <!-- Password Input Field -->
                         <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -147,37 +142,88 @@
                             app:passwordToggleEnabled="true">
 
                             <EditText
+                                android:id="@+id/password"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:drawableStart="@drawable/ic_lock_gray_24dp"
                                 android:drawablePadding="16dp"
-                                android:fontFamily="@font/calibri"
-                                android:hint="Password"
+                                android:fontFamily="@font/lora"
+                                android:hint="@string/password"
                                 android:inputType="textPassword"
                                 android:maxLines="1"
                                 android:textColor="@android:color/black"
                                 android:textSize="16sp" />
                         </com.google.android.material.textfield.TextInputLayout>
 
+                        <Button
+                            android:id="@+id/login"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="16dp"
+                            android:background="@drawable/buttonshape_t1"
+                            android:fontFamily="@font/lora"
+                            android:text="@string/letsGo"
+                            android:textAllCaps="false"
+                            android:textColor="#ffffff"
+                            android:textSize="18sp" />
+
+                        <!-- Reset Password Link -->
+                        <TextView
+                            android:id="@+id/reset_password"
+                            android:layout_width="wrap_content"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:layout_margin="16dp"
+                            android:autoLink="web"
+                            android:clickable="true"
+                            android:text="@string/forget_password"
+                            android:fontFamily="@font/lora"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="15sp" />
+
+
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
 
 
-                <Button
-                    android:id="@+id/login"
+
+
+                <!-- Horizontal LinearLayout for Google Sign-In and Register buttons -->
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_margin="16dp"
-                    android:background="@drawable/buttonshape"
-                    android:fontFamily="@font/calibri"
-                    android:text="Login"
-                    android:textAllCaps="false"
-                    android:textColor="#ffffff"
-                    android:textSize="24sp" />
-            </LinearLayout>
+                    android:orientation="horizontal"
+                    android:layout_margin="16dp">
 
+
+
+                    <!-- Google Sign-In Button -->
+                    <com.google.android.gms.common.SignInButton
+                        android:id="@+id/google_sign_in_button"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:textSize="15sp"/>
+
+                    <Button
+                        android:id="@+id/register_button"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:background="@drawable/buttonshape_t2"
+                        android:text="@string/register"
+                        android:textColor="#ffffff"
+                        android:fontFamily="@font/lora"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+            </LinearLayout>
 
         </ScrollView>
 

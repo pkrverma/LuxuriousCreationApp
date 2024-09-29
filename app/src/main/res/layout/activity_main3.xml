@@ -54,8 +54,8 @@
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="16dp"
                     android:layout_marginBottom="4dp"
-                    android:fontFamily="@font/calibri"
-                    android:text="Shashank Singhal"
+                    android:fontFamily="@font/lora"
+                    android:text="@string/profile_name"
                     android:textColor="#000000"
                     android:textSize="18sp" />
 
@@ -64,8 +64,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="16dp"
-                    android:fontFamily="@font/calibri"
-                    android:text="Mobile Application Developer"
+                    android:fontFamily="@font/lora"
+                    android:text="@string/profile_domain"
                     android:textSize="14sp" />
 
                 <LinearLayout
@@ -89,7 +89,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:fontFamily="@font/calibri"
+                            android:fontFamily="@font/lora"
                             android:text="24 Collection"
                             android:textColor="#000000"
                             android:textSize="14sp" />
@@ -99,7 +99,7 @@
                             android:layout_height="2dp"
                             android:layout_gravity="center"
                             android:layout_marginTop="8dp"
-                            android:background="@color/colorPrimaryDark" />
+                            android:background="@color/colorPrimary" />
 
                     </LinearLayout>
 
@@ -113,7 +113,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:fontFamily="@font/calibri"
+                            android:fontFamily="@font/lora"
                             android:text="12 History"
                             android:textColor="#b3b3b3"
                             android:textSize="14sp" />
@@ -123,7 +123,7 @@
                             android:layout_height="2dp"
                             android:layout_gravity="center"
                             android:layout_marginTop="8dp"
-                            android:background="@color/colorPrimaryDark"
+                            android:background="@color/colorPrimary"
                             android:visibility="invisible" />
 
                     </LinearLayout>
@@ -167,7 +167,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="16dp"
-                                android:fontFamily="@font/calibri"
+                                android:fontFamily="@font/lora"
                                 android:text="Best Chairs"
                                 android:textColor="#3C3C3C"
                                 android:textSize="16sp" />
@@ -204,7 +204,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="16dp"
-                                android:fontFamily="@font/calibri"
+                                android:fontFamily="@font/lora"
                                 android:text="Best Lamps"
                                 android:textColor="#3C3C3C"
                                 android:textSize="16sp" />
@@ -252,7 +252,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="16dp"
-                                android:fontFamily="@font/calibri"
+                                android:fontFamily="@font/lora"
                                 android:text="Best Chairs"
                                 android:textColor="#3C3C3C"
                                 android:textSize="16sp" />
@@ -289,7 +289,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="16dp"
-                                android:fontFamily="@font/calibri"
+                                android:fontFamily="@font/lora"
                                 android:text="Plant Choice"
                                 android:textColor="#3C3C3C"
                                 android:textSize="16sp" />
@@ -343,7 +343,7 @@
                     android:layout_height="2dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="8dp"
-                    android:background="@color/colorPrimaryDark"
+                    android:background="@color/colorPrimary"
                     android:visibility="invisible" />
 
             </LinearLayout>
@@ -365,7 +365,7 @@
                     android:layout_height="2dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="8dp"
-                    android:background="@color/colorPrimaryDark" />
+                    android:background="@color/colorPrimary" />
 
             </LinearLayout>
 

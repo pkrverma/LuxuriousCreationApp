@@ -9,7 +9,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/colorPrimary"
         android:paddingTop="24dp"
         android:theme="@style/AppTheme.AppBarOverlay"
         app:elevation="0dp">
@@ -43,7 +43,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="64dp"
-                        android:fontFamily="@font/calibri"
+                        android:fontFamily="@font/lora"
                         android:text="Discover"
                         android:textColor="#FFFFFF"
                         android:textSize="24sp" />
@@ -71,7 +71,7 @@
                         android:background="@drawable/white_rounded_shape"
                         android:drawableStart="@drawable/ic_search_light_gray_24dp"
                         android:drawablePadding="8dp"
-                        android:fontFamily="@font/calibri"
+                        android:fontFamily="@font/lora"
                         android:hint="What are you looking for ?"
                         android:padding="12dp"
                         android:textColor="@android:color/black"
@@ -98,6 +98,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/colorSecondaryBackground"
                 android:orientation="vertical">
 
 
@@ -107,7 +108,7 @@
                     android:layout_marginLeft="4dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginRight="4dp"
-                    android:fontFamily="@font/calibri"
+                    android:fontFamily="@font/lora"
                     android:padding="8dp"
                     android:text="Category"
                     android:textColor="#000000"
@@ -137,12 +138,13 @@
                             <LinearLayout
                                 android:layout_width="100dp"
                                 android:layout_height="wrap_content"
+                                android:background="@color/cardview_light_background"
                                 android:orientation="vertical">
 
                                 <ImageView
                                     android:layout_width="36dp"
                                     android:layout_height="36dp"
-                                    android:src="@drawable/plant_white_bg" />
+                                    android:src="@drawable/bed" />
 
                                 <RelativeLayout
                                     android:layout_width="match_parent"
@@ -152,8 +154,8 @@
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:fontFamily="@font/calibri"
-                                        android:text="Plant"
+                                        android:fontFamily="@font/lora"
+                                        android:text="@string/beds"
                                         android:textColor="#3C3C3C"
                                         android:textSize="16sp" />
 
@@ -162,6 +164,10 @@
                                         android:layout_height="wrap_content"
                                         android:layout_alignParentTop="true"
                                         android:layout_alignParentEnd="true"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_marginTop="4dp"
+                                        android:layout_marginEnd="0dp"
+                                        android:layout_marginBottom="2dp"
                                         android:src="@drawable/ic_arrow_forward_black_24dp" />
                                 </RelativeLayout>
 
@@ -186,7 +192,7 @@
                                 <ImageView
                                     android:layout_width="36dp"
                                     android:layout_height="36dp"
-                                    android:src="@drawable/lamp_white_bg" />
+                                    android:src="@drawable/table" />
 
                                 <RelativeLayout
                                     android:layout_width="match_parent"
@@ -196,8 +202,8 @@
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:fontFamily="@font/calibri"
-                                        android:text="Lamp"
+                                        android:fontFamily="@font/lora"
+                                        android:text="@string/tables"
                                         android:textColor="#3C3C3C"
                                         android:textSize="16sp" />
 
@@ -206,6 +212,8 @@
                                         android:layout_height="wrap_content"
                                         android:layout_alignParentTop="true"
                                         android:layout_alignParentEnd="true"
+                                        android:layout_marginTop="4dp"
+                                        android:layout_marginEnd="0dp"
                                         android:src="@drawable/ic_arrow_forward_black_24dp" />
                                 </RelativeLayout>
 
@@ -230,7 +238,7 @@
                                 <ImageView
                                     android:layout_width="36dp"
                                     android:layout_height="36dp"
-                                    android:src="@drawable/chair_white_bg" />
+                                    android:src="@drawable/sofa" />
 
                                 <RelativeLayout
                                     android:layout_width="match_parent"
@@ -240,8 +248,8 @@
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:fontFamily="@font/calibri"
-                                        android:text="Chair"
+                                        android:fontFamily="@font/lora"
+                                        android:text="@string/sofa"
                                         android:textColor="#3C3C3C"
                                         android:textSize="16sp" />
 
@@ -250,6 +258,100 @@
                                         android:layout_height="wrap_content"
                                         android:layout_alignParentTop="true"
                                         android:layout_alignParentEnd="true"
+                                        android:layout_marginTop="4dp"
+                                        android:layout_marginEnd="0dp"
+                                        android:src="@drawable/ic_arrow_forward_black_24dp" />
+                                </RelativeLayout>
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            app:cardCornerRadius="8dp"
+                            app:cardElevation="4dp"
+                            app:cardUseCompatPadding="true"
+                            app:contentPadding="12dp">
+
+                            <LinearLayout
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:layout_width="36dp"
+                                    android:layout_height="36dp"
+                                    android:src="@drawable/chair" />
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="16dp">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/lora"
+                                        android:text="@string/chairs"
+                                        android:textColor="#3C3C3C"
+                                        android:textSize="16sp" />
+
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_marginTop="4dp"
+                                        android:layout_marginEnd="0dp"
+                                        android:src="@drawable/ic_arrow_forward_black_24dp" />
+                                </RelativeLayout>
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            app:cardCornerRadius="8dp"
+                            app:cardElevation="4dp"
+                            app:cardUseCompatPadding="true"
+                            app:contentPadding="12dp">
+
+                            <LinearLayout
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:layout_width="36dp"
+                                    android:layout_height="36dp"
+                                    android:src="@drawable/dining" />
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="16dp">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/lora"
+                                        android:text="@string/dining"
+                                        android:textColor="#3C3C3C"
+                                        android:textSize="16sp" />
+
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_marginTop="4dp"
+                                        android:layout_marginEnd="0dp"
                                         android:src="@drawable/ic_arrow_forward_black_24dp" />
                                 </RelativeLayout>
 
@@ -266,7 +368,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="4dp"
                     android:layout_marginRight="4dp"
-                    android:fontFamily="@font/calibri"
+                    android:fontFamily="@font/lora"
                     android:padding="8dp"
                     android:text="Hot Item"
                     android:textColor="#000000"
@@ -303,7 +405,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="200dp"
                                     android:scaleType="centerCrop"
-                                    android:src="@drawable/favorite_img_4" />
+                                    android:src="@drawable/chair1" />
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -316,8 +418,8 @@
                                     <TextView
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:fontFamily="@font/calibri"
-                                        android:text="Cactus"
+                                        android:fontFamily="@font/lora"
+                                        android:text="Chair"
                                         android:textColor="#FFFFFF"
                                         android:textSize="14sp"
                                         android:textStyle="bold" />
@@ -333,8 +435,8 @@
                                             android:layout_width="0dp"
                                             android:layout_height="wrap_content"
                                             android:layout_weight="80"
-                                            android:fontFamily="@font/calibri"
-                                            android:text="$18"
+                                            android:fontFamily="@font/lora"
+                                            android:text="₹2859"
                                             android:textColor="#FFFFFF"
                                             android:textSize="12sp"
                                             android:textStyle="bold" />
@@ -383,7 +485,7 @@
                                     <TextView
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:fontFamily="@font/calibri"
+                                        android:fontFamily="@font/lora"
                                         android:text="Traditional Chair"
                                         android:textColor="#FFFFFF"
                                         android:textSize="14sp"
@@ -400,7 +502,7 @@
                                             android:layout_width="0dp"
                                             android:layout_height="wrap_content"
                                             android:layout_weight="80"
-                                            android:fontFamily="@font/calibri"
+                                            android:fontFamily="@font/lora"
                                             android:text="$24"
                                             android:textColor="#FFFFFF"
                                             android:textSize="12sp"
@@ -456,7 +558,7 @@
                                     <TextView
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:fontFamily="@font/calibri"
+                                        android:fontFamily="@font/lora"
                                         android:text="Wooden Chair"
                                         android:textColor="#FFFFFF"
                                         android:textSize="14sp"
@@ -473,7 +575,7 @@
                                             android:layout_width="0dp"
                                             android:layout_height="wrap_content"
                                             android:layout_weight="80"
-                                            android:fontFamily="@font/calibri"
+                                            android:fontFamily="@font/lora"
                                             android:text="$44"
                                             android:textColor="#FFFFFF"
                                             android:textSize="12sp"
@@ -525,7 +627,7 @@
                                     <TextView
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:fontFamily="@font/calibri"
+                                        android:fontFamily="@font/lora"
                                         android:text="Elegant Lamp"
                                         android:textColor="#FFFFFF"
                                         android:textSize="14sp"
@@ -542,7 +644,7 @@
                                             android:layout_width="0dp"
                                             android:layout_height="wrap_content"
                                             android:layout_weight="80"
-                                            android:fontFamily="@font/calibri"
+                                            android:fontFamily="@font/lora"
                                             android:text="$13"
                                             android:textColor="#FFFFFF"
                                             android:textSize="12sp"
@@ -600,7 +702,7 @@
                                     <TextView
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:fontFamily="@font/calibri"
+                                        android:fontFamily="@font/lora"
                                         android:text="Beach Beautiful"
                                         android:textColor="#FFFFFF"
                                         android:textSize="14sp"
@@ -617,7 +719,7 @@
                                             android:layout_width="0dp"
                                             android:layout_height="wrap_content"
                                             android:layout_weight="80"
-                                            android:fontFamily="@font/calibri"
+                                            android:fontFamily="@font/lora"
                                             android:text="$36"
                                             android:textColor="#FFFFFF"
                                             android:textSize="12sp"
@@ -668,7 +770,7 @@
                                     <TextView
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:fontFamily="@font/calibri"
+                                        android:fontFamily="@font/lora"
                                         android:text="Architectural"
                                         android:textColor="#FFFFFF"
                                         android:textSize="14sp"
@@ -685,7 +787,7 @@
                                             android:layout_width="0dp"
                                             android:layout_height="wrap_content"
                                             android:layout_weight="80"
-                                            android:fontFamily="@font/calibri"
+                                            android:fontFamily="@font/lora"
                                             android:text="$30"
                                             android:textColor="#FFFFFF"
                                             android:textSize="12sp"
@@ -754,7 +856,7 @@
                     android:layout_height="2dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="8dp"
-                    android:background="@color/colorPrimaryDark" />
+                    android:background="@color/colorPrimary" />
 
             </LinearLayout>
 
@@ -776,7 +878,7 @@
                     android:layout_height="2dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="8dp"
-                    android:background="@color/colorPrimaryDark"
+                    android:background="@color/colorPrimary"
                     android:visibility="invisible" />
 
             </LinearLayout>

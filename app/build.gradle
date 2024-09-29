@@ -1,11 +1,12 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 34
     defaultConfig {
-        applicationId "com.shashank.platform.furnitureecommerceappui"
-        minSdkVersion 21
-        targetSdkVersion 30
+        applicationId "com.pulkit.platform.furnitureecommerceappui"
+        minSdkVersion 24
+        targetSdkVersion 34
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
@@ -27,4 +28,23 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    implementation 'com.google.firebase:firebase-auth:21.0.1' // Check for the latest version
+
+    // Firebase Authentication
+    implementation 'com.google.firebase:firebase-auth:21.0.3'
+
+    // Google Sign-In
+    implementation 'com.google.android.gms:play-services-auth:20.6.0'
+
+    // Firebase BOM (Bill of Materials) for managing versions (optional but recommended)
+    implementation platform('com.google.firebase:firebase-bom:32.0.0')
+
+    // ARCore dependency for AR capabilities
+//    implementation 'com.google.ar:core:1.32.0'
+    // Sceneform dependency (if needed for 3D model viewing)
+//    implementation 'com.google.ar.sceneform:core:1.17.1'
+
+    implementation 'com.google.ar.sceneform.ux:sceneform-ux:1.17.1'
+    implementation 'com.google.ar:core:1.32.0' // ARCore
+
 }

@@ -1,3 +1,27 @@
 <resources>
-    <string name="app_name">Furniture Ecommerce App UI</string>
+    <string name="app_name" translatable="false">Luxurious Creation</string>
+    <string name="app_line" translatable="false">Make Your Living Comfortable</string>
+    <string name="login">Login</string>
+    <string name="letsGo">Let\'s Go</string>
+    <string name="email">Email Id</string>
+    <string name="password">Password</string>
+    <string name="register">New User?</string>
+    <string name="forget_password">Forgot Password?</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="renew_password">Re-enter New Password</string>
+    <string name="new_password">New Password</string>
+    <string name="reset_link_sent">Send Link</string>
+    <string name="reset_msg">Password reset link will be sent on the Email id</string>
+
+    <string name="chairs">Chairs</string>
+    <string name="beds">Beds</string>
+    <string name="tables">Tables</string>
+    <string name="dining">Dining Set</string>
+    <string name="sofa">Sofa Set</string>
+
+    <string name="profile_name">Pulkit Verma</string>
+    <string name="profile_domain">Aspiring App Developer</string>
+
+    <string name="default_web_client_id">project-1058953721454</string>
+
 </resources>
