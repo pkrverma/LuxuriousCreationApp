@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Main5Activity">
+    tools:context=".Model1Activity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -18,12 +18,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="360dp">
 
-
+                <!-- Model Image -->
                 <ImageView
+                    android:id="@+id/model_image"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/chair1" />
+                    android:src="@drawable/errormsg" />
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -41,7 +42,6 @@
                     android:layout_alignParentBottom="true"
                     android:layout_margin="16dp"
                     android:src="@drawable/ic_favorite_white_24dp" />
-
             </RelativeLayout>
 
             <LinearLayout
@@ -61,25 +61,28 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
+                        <!-- Name Text -->
                         <TextView
+                            android:id="@+id/name_text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="4dp"
                             android:fontFamily="@font/lora"
-                            android:text="Chair"
+                            android:text="Model Name"
                             android:textColor="#000000"
                             android:textSize="24sp" />
 
+                        <!-- Price Text -->
                         <TextView
+                            android:id="@+id/price_text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/lora"
-                            android:text="₹2859"
+                            android:text="₹0"
                             android:textColor="#8e8ef6"
                             android:textSize="16sp"
                             android:textStyle="bold" />
                     </LinearLayout>
-
                 </LinearLayout>
 
                 <LinearLayout
@@ -93,23 +96,26 @@
                         android:gravity="right"
                         android:orientation="vertical">
 
+                        <!-- Shop Text (Optional) -->
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="4dp"
                             android:fontFamily="@font/lora"
-                            android:text="Wildan Shop"
+                            android:text="Shop Name"
                             android:textSize="16sp" />
 
-                        <ImageView
-                            android:layout_width="72dp"
+                        <!-- Rating Text -->
+                        <TextView
+                            android:id="@+id/rating_text"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/four_star" />
-
+                            android:layout_marginBottom="4dp"
+                            android:fontFamily="@font/lora"
+                            android:text="Rating: 0"
+                            android:textSize="16sp" />
                     </LinearLayout>
-
                 </LinearLayout>
-
             </LinearLayout>
 
             <View
@@ -120,16 +126,20 @@
                 android:layout_marginBottom="8dp"
                 android:background="#dedede" />
 
+            <!-- Description Text -->
             <TextView
+                android:id="@+id/description_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/lora"
                 android:padding="16dp"
-                android:text="in addition to being a decoration, cactus can also be a health benefit, let's buy cactus in our store because now discount 30%"
+                android:text="Model description goes here."
                 android:textColor="#444444"
                 android:textSize="16sp" />
 
+            <!-- Buy Now Button -->
             <Button
+                android:id="@+id/buyNow_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -141,6 +151,7 @@
                 android:textColor="#ffffff"
                 android:textSize="24sp" />
 
+            <!-- View in AR Button -->
             <Button
                 android:id="@+id/viewAr_button"
                 android:layout_width="match_parent"
@@ -156,6 +167,4 @@
         </LinearLayout>
 
     </ScrollView>
-
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

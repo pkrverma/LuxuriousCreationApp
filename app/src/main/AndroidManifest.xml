@@ -20,7 +20,7 @@
         tools:ignore="AllowBackup">
 
         <activity
-            android:name="com.pulkit.platform.furnitureecommerceappui.Main5Activity"
+            android:name="com.pulkit.platform.furnitureecommerceappui.Model1Activity"
             android:label=""
             android:screenOrientation="portrait"
             android:theme="@style/MyAppTheme"

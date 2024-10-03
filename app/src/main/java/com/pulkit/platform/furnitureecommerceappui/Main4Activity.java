@@ -15,8 +15,8 @@ public class Main4Activity extends AppCompatActivity {
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
 
         // Initialize the home and profile layouts
-        LinearLayout homeLinearLayout = findViewById(R.id.home_linear_layout);
-        LinearLayout profileLinearLayout = findViewById(R.id.profile_linear_layout); // Add ID for profile layout
+        LinearLayout homeLinearLayout = findViewById(R.id.home_button);
+        LinearLayout profileLinearLayout = findViewById(R.id.profile_button); // Add ID for profile layout
 
         // Set OnClickListener for the home button
         homeLinearLayout.setOnClickListener(new View.OnClickListener() {

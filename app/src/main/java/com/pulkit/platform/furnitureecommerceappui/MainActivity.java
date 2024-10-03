@@ -8,9 +8,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.gms.common.SignInButton;
-import android.widget.LinearLayout;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -24,6 +22,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     private EditText usernameEditText;
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private GoogleSignInClient googleSignInClient;
 
     private static final int RC_SIGN_IN = 9001; // Request code for Google sign-in
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,13 +74,13 @@ public class MainActivity extends AppCompatActivity {
                 auth.signInWithEmailAndPassword(username, password)
                         .addOnCompleteListener(this, task -> {
                             if (task.isSuccessful()) {
-                                // Sign in success, navigate to next activity
                                 FirebaseUser user = auth.getCurrentUser();
-                                Intent intent = new Intent(getApplicationContext(), Main2Activity.class);
+
+                                // Redirect to Main2Activity after successful login
+                                Intent intent = new Intent(MainActivity.this, Main2Activity.class);
                                 startActivity(intent);
-                                finish();
+                                finish(); // Close MainActivity if you don't want to return to it
                             } else {
-                                // If sign in fails, display a message to the user
                                 Toast.makeText(MainActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
                             }
                         });
@@ -126,9 +128,10 @@ public class MainActivity extends AppCompatActivity {
                     .addOnCompleteListener(this, task -> {
                         if (task.isSuccessful()) {
                             FirebaseUser user = auth.getCurrentUser();
-                            Intent intent = new Intent(getApplicationContext(), Main2Activity.class);
+                            // Redirect to Main2Activity after Google sign-in
+                            Intent intent = new Intent(MainActivity.this, Main2Activity.class);
                             startActivity(intent);
-                            finish();
+                            finish(); // Close MainActivity if you don't want to return to it
                         } else {
                             Toast.makeText(MainActivity.this, "Authentication Failed.", Toast.LENGTH_SHORT).show();
                         }

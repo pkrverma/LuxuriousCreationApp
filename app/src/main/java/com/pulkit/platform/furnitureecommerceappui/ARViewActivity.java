@@ -38,7 +38,7 @@ public class ARViewActivity extends AppCompatActivity {
 
         // Load the 3D model
         ModelRenderable.builder()
-                .setSource(this, R.raw.chair4)  // Replace with your actual model file
+                .setSource(this, R.raw.model1)  // Replace with your actual model file
                 .build()
                 .thenAccept(renderable -> modelRenderable = renderable)
                 .exceptionally(throwable -> {

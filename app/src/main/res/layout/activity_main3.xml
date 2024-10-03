@@ -306,7 +306,7 @@
         </ScrollView>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/favorite"
+            android:id="@+id/favorite_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -326,7 +326,7 @@
             android:weightSum="100">
 
             <LinearLayout
-                android:id="@+id/home_linear_layout"
+                android:id="@+id/home_button"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="50"

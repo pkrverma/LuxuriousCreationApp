@@ -199,7 +199,7 @@
             android:weightSum="100">
 
             <LinearLayout
-                android:id="@+id/home_linear_layout"
+                android:id="@+id/home_button"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="50"
@@ -222,7 +222,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/profile_linear_layout"
+                android:id="@+id/profile_button"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="50"
