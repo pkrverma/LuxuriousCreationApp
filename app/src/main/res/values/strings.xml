@@ -23,5 +23,43 @@
     <string name="profile_domain">Aspiring App Developer</string>
 
     <string name="default_web_client_id">project-1058953721454</string>
+    <string name="default_ar_url">https://luxurious-creation.web.app/404.html</string>
+    <string name="default_description">Sorry! No Description is found for this item.</string>
+    <string name="default_name">Model Error</string>
+<!--    <string name="default_shop_url">https://luxurious-creation.web.app/404.html</string>-->
+
+    <string name="model1_name">Comfy Chair</string>
+    <string name="model2_name">Bed</string>
+    <string name="model3_name">Sofa Set with Fancy Table</string>
+    <string name="model4_name">Sofa Set</string>
+    <string name="model5_name">Family Dining Set with Chairs</string>
+    <string name="model6_name">Bed Side Table</string>
+    <string name="model7_name">Maharajah Couple Sofa with Coffee Table</string>
+    <string name="model8_name">Multi Slide Wardrobe</string>
+    <string name="model9_name">Double Size Bed</string>
+
+
+    <string name="model1_desc">An elegant and sturdy chair, perfect for adding a touch of comfort to any space.</string>
+    <string name="model2_desc">Luxurious bed designed for ultimate relaxation and style in your bedroom.</string>
+    <string name="model3_desc">A cozy sofa set paired with a stylish table, perfect for modern living rooms.</string>
+    <string name="model4_desc">Experience unmatched comfort with this contemporary and spacious sofa set.</string>
+    <string name="model5_desc">A stylish and spacious dining set, perfect for family gatherings and meals.</string>
+    <string name="model6_desc">Compact and stylish, this bedside table is the perfect companion for your bed.</string>
+    <string name="model7_desc">A royal-style sofa set complete with a coffee table, adding grandeur to your living room.</string>
+    <string name="model8_desc">A spacious and sleek wardrobe with multiple sliding doors for easy access and storage.</string>
+    <string name="model9_desc">A comfortable and modern double-size bed for your master bedroom.</string>
+
+    <string name="model1_arLink">https://luxurious-creation.web.app/ar-pages/model1.html</string>
+    <string name="model2_arLink">https://luxurious-creation.web.app/ar-pages/model2.html</string>
+    <string name="model3_arLink">https://luxurious-creation.web.app/ar-pages/model3.html</string>
+    <string name="model4_arLink">https://luxurious-creation.web.app/ar-pages/model4.html</string>
+    <string name="model5_arLink">https://luxurious-creation.web.app/ar-pages/model5.html</string>
+    <string name="model6_arLink">https://luxurious-creation.web.app/ar-pages/model6.html</string>
+    <string name="model7_arLink">https://luxurious-creation.web.app/ar-pages/model7.html</string>
+    <string name="model8_arLink">https://luxurious-creation.web.app/ar-pages/model8.html</string>
+    <string name="model9_arLink">https://luxurious-creation.web.app/ar-pages/model9.html</string>
+
+
+
 
 </resources>

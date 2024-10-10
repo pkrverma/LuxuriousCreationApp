@@ -8,18 +8,20 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class Main2Activity extends AppCompatActivity {
 
-    // Sample furniture models
     private FurnitureModel[] furnitureModels = {
-            new FurnitureModel("Chair", 500.00, R.drawable.model1, "Great for comfort and style"),
-            new FurnitureModel("Bed", 150.00, R.drawable.model2, "Perfect for dining"),
-            new FurnitureModel("Sofa Set", 300.00, R.drawable.model3, "Cozy and modern"),
-            new FurnitureModel("Sofa Set", 75.00, R.drawable.model4, "Comfortable seating"),
-            new FurnitureModel("Dining Set", 450.00, R.drawable.model5, "Gather around this stylish set")
+            new FurnitureModel(R.string.model1_name, 950.00, R.drawable.model1, R.string.model1_desc, "", R.string.model1_arLink),
+            new FurnitureModel(R.string.model2_name, 13540.00, R.drawable.model2, R.string.model2_desc, "", R.string.model2_arLink),
+            new FurnitureModel(R.string.model3_name, 11200.00, R.drawable.model3, R.string.model3_desc, "", R.string.model3_arLink),
+            new FurnitureModel(R.string.model4_name, 9569.00, R.drawable.model4, R.string.model4_desc, "", R.string.model4_arLink),
+            new FurnitureModel(R.string.model5_name, 15450.00, R.drawable.model5, R.string.model5_desc, "", R.string.model5_arLink),
+            new FurnitureModel(R.string.model6_name, 2350.00, R.drawable.model6, R.string.model6_desc, "", R.string.model6_arLink),
+            new FurnitureModel(R.string.model7_name, 7420.00, R.drawable.model7, R.string.model7_desc, "", R.string.model7_arLink),
+            new FurnitureModel(R.string.model8_name, 8420.00, R.drawable.model8, R.string.model8_desc, "", R.string.model8_arLink),
+            new FurnitureModel(R.string.model9_name, 14490.00, R.drawable.model9, R.string.model9_desc, "", R.string.model9_arLink)
     };
 
     @Override
@@ -27,43 +29,41 @@ public class Main2Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-        // Find the GridLayout instead of LinearLayout
+        // Apply entry transition only when entering Main2Activity
+        overridePendingTransition(R.anim.slide_in, 0);  // No exit transition for Main2Activity
+
         GridLayout gridLayout = findViewById(R.id.gridLayout);
 
-        // Dynamically populate card views
         for (FurnitureModel model : furnitureModels) {
-            addCardView(model, gridLayout); // Pass the gridLayout to the method
+            addCardView(model, gridLayout);
         }
 
-//        // Find the buttons by their IDs
         LinearLayout profileButton = findViewById(R.id.profile_button);
-
-        // Set onClickListener for the profile button to navigate to Main3Activity
-        profileButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Main2Activity.this, Main3Activity.class);
-                startActivity(intent);
-            }
+        profileButton.setOnClickListener(v -> {
+            Intent intent = new Intent(Main2Activity.this, Main3Activity.class);
+            startActivity(intent);
+            // Apply only the slide-in transition when navigating to Main3Activity
+            overridePendingTransition(R.anim.slide_in, 0);  // No exit transition for Main2Activity
         });
 
         FloatingActionButton favoriteButton = findViewById(R.id.favorite_button);
-        favoriteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Intent to navigate to Main4Activity
-                Intent intent = new Intent(Main2Activity.this, Main4Activity.class);
-                startActivity(intent);
-            }
+        favoriteButton.setOnClickListener(v -> {
+            Intent intent = new Intent(Main2Activity.this, Main4Activity.class);
+            startActivity(intent);
+            // Apply only the slide-in transition when navigating to Main4Activity
+            overridePendingTransition(R.anim.slide_in, 0);  // No exit transition for Main2Activity
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        finishAffinity();  // Close all activities and exit the app
+        // Apply both fade-in and fade-out transitions when exiting the app
+        overridePendingTransition(0, R.anim.fade_out);  // Fade-out transition for app exit
+    }
 
     private void addCardView(FurnitureModel model, GridLayout gridLayout) {
-        // Inflate the card item layout
         View cardView = getLayoutInflater().inflate(R.layout.card_item, null);
-
-        // Set up the views using their IDs
         ImageView imageView = cardView.findViewById(R.id.card_image);
         imageView.setImageResource(model.getImageResource());
 
@@ -73,34 +73,47 @@ public class Main2Activity extends AppCompatActivity {
         TextView priceTextView = cardView.findViewById(R.id.card_price);
         priceTextView.setText("₹" + model.getPrice());
 
-        // Set layout parameters for GridLayout
+        // Set OnClickListener for cardView to open Model1Activity with the selected data
+        cardView.setOnClickListener(v -> {
+            Intent intent = new Intent(Main2Activity.this, Model1Activity.class);
+            // Pass the model data to Model1Activity
+            intent.putExtra("model_name", model.getName());
+            intent.putExtra("model_price", model.getPrice());
+            intent.putExtra("model_image", model.getImageResource());
+            intent.putExtra("model_description", model.getDescription());
+            intent.putExtra("shop_url", model.getShopUrl());
+            intent.putExtra("ar_url", model.getArUrl());
+            startActivity(intent);
+        });
+
         GridLayout.LayoutParams params = new GridLayout.LayoutParams();
-        params.width = 0; // Use 0dp for width to allow for weighting
+        params.width = 0;
         params.height = GridLayout.LayoutParams.WRAP_CONTENT;
-        params.setMargins(8, 8, 8, 8); // Set margins for the grid items
-        params.columnSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f); // Add this line to define the weight
+        params.setMargins(8, 8, 8, 8);
+        params.columnSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f);
         cardView.setLayoutParams(params);
 
-
-        // Add the card view to the grid layout
         gridLayout.addView(cardView);
     }
 
-    // FurnitureModel class to represent furniture data
     public static class FurnitureModel {
-        private String name;
+        private int name;
         private double price;
         private int imageResource;
-        private String description;
+        private int description;
+        private String shopUrl;
+        private int arUrl;
 
-        public FurnitureModel(String name, double price, int imageResource, String description) {
+        public FurnitureModel(int name, double price, int imageResource, int description, String shopUrl, int arUrl) {
             this.name = name;
             this.price = price;
             this.imageResource = imageResource;
             this.description = description;
+            this.shopUrl = shopUrl;
+            this.arUrl = arUrl;
         }
 
-        public String getName() {
+        public int getName() {
             return name;
         }
 
@@ -112,8 +125,16 @@ public class Main2Activity extends AppCompatActivity {
             return imageResource;
         }
 
-        public String getDescription() {
+        public int getDescription() {
             return description;
+        }
+
+        public String getShopUrl() {
+            return shopUrl;
+        }
+
+        public int getArUrl() {
+            return arUrl;
         }
     }
 }
