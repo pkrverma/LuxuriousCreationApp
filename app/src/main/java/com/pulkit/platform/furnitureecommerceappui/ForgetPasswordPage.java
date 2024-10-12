@@ -3,7 +3,6 @@ package com.pulkit.platform.furnitureecommerceappui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -11,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-public class ForgetPasswordActivity extends AppCompatActivity {
+public class ForgetPasswordPage extends AppCompatActivity {
 
     private EditText emailEditText, newPasswordEditText, reenterPasswordEditText;
     private FirebaseAuth firebaseAuth;
@@ -40,11 +39,11 @@ public class ForgetPasswordActivity extends AppCompatActivity {
         firebaseAuth.sendPasswordResetEmail(email)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        Toast.makeText(ForgetPasswordActivity.this, "Reset link sent to your email", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(ForgetPasswordActivity.this, MainActivity.class));
+                        Toast.makeText(ForgetPasswordPage.this, "Reset link sent to your email", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(ForgetPasswordPage.this, AuthenticationPage.class));
                         finish();
                     } else {
-                        Toast.makeText(ForgetPasswordActivity.this, "Error occurred: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(ForgetPasswordPage.this, "Error occurred: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
                     }
                 });
     }

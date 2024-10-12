@@ -4,11 +4,10 @@
     package="com.pulkit.platform.furnitureecommerceappui">
 
     <!-- Required permission for AR and camera access -->
-    <uses-permission android:name="android.permission.CAMERA"/>
+<!--    <uses-permission android:name="android.permission.CAMERA"/>-->
 
     <!-- Specifies that the app uses AR features and the camera -->
-    <uses-feature android:name="android.hardware.camera.ar" android:required="false"/>
-
+<!--    <uses-feature android:name="android.hardware.camera.ar" android:required="false"/>-->
 
     <application
         android:allowBackup="true"
@@ -19,29 +18,33 @@
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
 
+        <!-- Model Detail Activity -->
         <activity
-            android:name="com.pulkit.platform.furnitureecommerceappui.Model1Activity"
+            android:name="com.pulkit.platform.furnitureecommerceappui.ModelDetailPage"
             android:label=""
             android:screenOrientation="portrait"
             android:theme="@style/MyAppTheme"
             android:windowSoftInputMode="stateHidden|adjustPan" />
 
+        <!-- Favourite Page Activity -->
         <activity
-            android:name="com.pulkit.platform.furnitureecommerceappui.Main4Activity"
+            android:name="com.pulkit.platform.furnitureecommerceappui.FavouritePage"
             android:label=""
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustPan" />
 
+        <!-- Profile Page Activity -->
         <activity
-            android:name="com.pulkit.platform.furnitureecommerceappui.Main3Activity"
+            android:name="com.pulkit.platform.furnitureecommerceappui.ProfilePage"
             android:label=""
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustPan" />
 
+        <!-- Home Page Activity -->
         <activity
-            android:name="com.pulkit.platform.furnitureecommerceappui.Main2Activity"
+            android:name="com.pulkit.platform.furnitureecommerceappui.HomePage"
             android:label=""
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
@@ -49,40 +52,56 @@
 
         <!-- Main Activity with android:exported attribute -->
         <activity
-            android:name="com.pulkit.platform.furnitureecommerceappui.MainActivity"
+            android:name="com.pulkit.platform.furnitureecommerceappui.AuthenticationPage"
             android:label=""
             android:screenOrientation="portrait"
             android:theme="@style/MyAppTheme"
             android:windowSoftInputMode="stateHidden|adjustPan"
-            android:exported="true"> <!-- Added android:exported="true" -->
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <!-- AR View Activity -->
+        <!-- Register Page Activity -->
         <activity
-            android:name=".ARViewActivity"
-            android:label="AR View"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden|adjustPan" />
-
-        <!-- Forget Password and Register for new user -->
-        <activity
-            android:name=".RegisterActivity"
+            android:name=".RegisterPage"
             android:label="Register"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustPan" />
 
+        <!-- Forget Password Activity -->
         <activity
-            android:name=".ForgetPasswordActivity"
+            android:name=".ForgetPasswordPage"
             android:label="Forgot Password"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustPan" />
 
+        <!-- Beds Category Page Activity -->
+        <activity
+            android:name="com.pulkit.platform.furnitureecommerceappui.BedsCategoryPage"
+            android:label="Beds Category"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <!-- Tables Category Page Activity -->
+        <activity
+            android:name="com.pulkit.platform.furnitureecommerceappui.TablesCategoryPage"
+            android:label="Tables Category"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <!-- Tables Category Page Activity -->
+        <activity
+            android:name="com.pulkit.platform.furnitureecommerceappui.SofaSetsCategoryPage"
+            android:label="SofaSets Category"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
     </application>
 </manifest>

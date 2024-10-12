@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class Main2Activity extends AppCompatActivity {
+public class HomePage extends AppCompatActivity {
 
     private FurnitureModel[] furnitureModels = {
             new FurnitureModel(R.string.model1_name, 950.00, R.drawable.model1, R.string.model1_desc, "", R.string.model1_arLink),
@@ -27,10 +27,10 @@ public class Main2Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.activity_home);
 
-        // Apply entry transition only when entering Main2Activity
-        overridePendingTransition(R.anim.slide_in, 0);  // No exit transition for Main2Activity
+        // Apply entry transition only when entering HomePage
+        overridePendingTransition(R.anim.slide_in, 0);  // No exit transition for HomePage
 
         GridLayout gridLayout = findViewById(R.id.gridLayout);
 
@@ -40,19 +40,25 @@ public class Main2Activity extends AppCompatActivity {
 
         LinearLayout profileButton = findViewById(R.id.profile_button);
         profileButton.setOnClickListener(v -> {
-            Intent intent = new Intent(Main2Activity.this, Main3Activity.class);
+            Intent intent = new Intent(HomePage.this, ProfilePage.class);
             startActivity(intent);
-            // Apply only the slide-in transition when navigating to Main3Activity
-            overridePendingTransition(R.anim.slide_in, 0);  // No exit transition for Main2Activity
+            // Apply only the slide-in transition when navigating to ProfilePage
+            overridePendingTransition(R.anim.slide_in, 0);  // No exit transition for HomePage
         });
 
         FloatingActionButton favoriteButton = findViewById(R.id.favorite_button);
         favoriteButton.setOnClickListener(v -> {
-            Intent intent = new Intent(Main2Activity.this, Main4Activity.class);
+            Intent intent = new Intent(HomePage.this, FavouritePage.class);
             startActivity(intent);
-            // Apply only the slide-in transition when navigating to Main4Activity
-            overridePendingTransition(R.anim.slide_in, 0);  // No exit transition for Main2Activity
+            // Apply only the slide-in transition when navigating to FavouritePage
+            overridePendingTransition(R.anim.slide_in, 0);  // No exit transition for HomePage
         });
+
+        // Add onClick functionality for the card
+        addBedCardClickListener();
+        addTableCardClickListener();
+        addSofaSetCardClickListener();
+
     }
 
     @Override
@@ -63,7 +69,7 @@ public class Main2Activity extends AppCompatActivity {
     }
 
     private void addCardView(FurnitureModel model, GridLayout gridLayout) {
-        View cardView = getLayoutInflater().inflate(R.layout.card_item, null);
+        View cardView = getLayoutInflater().inflate(R.layout.card_model, null);
         ImageView imageView = cardView.findViewById(R.id.card_image);
         imageView.setImageResource(model.getImageResource());
 
@@ -73,10 +79,10 @@ public class Main2Activity extends AppCompatActivity {
         TextView priceTextView = cardView.findViewById(R.id.card_price);
         priceTextView.setText("₹" + model.getPrice());
 
-        // Set OnClickListener for cardView to open Model1Activity with the selected data
+        // Set OnClickListener for cardView to open ModelDetailPage with the selected data
         cardView.setOnClickListener(v -> {
-            Intent intent = new Intent(Main2Activity.this, Model1Activity.class);
-            // Pass the model data to Model1Activity
+            Intent intent = new Intent(HomePage.this, ModelDetailPage.class);
+            // Pass the model data to ModelDetailPage
             intent.putExtra("model_name", model.getName());
             intent.putExtra("model_price", model.getPrice());
             intent.putExtra("model_image", model.getImageResource());
@@ -94,6 +100,31 @@ public class Main2Activity extends AppCompatActivity {
         cardView.setLayoutParams(params);
 
         gridLayout.addView(cardView);
+    }
+
+    // Method to handle card click event
+    private void addBedCardClickListener() {
+        View bedCardView = findViewById(R.id.bed_card_view);  // Assuming you assigned an id to the bed card in activity_home.xml
+        bedCardView.setOnClickListener(v -> {
+            Intent intent = new Intent(HomePage.this, BedsCategoryPage.class);  // Redirect to BedCategoryPage
+            startActivity(intent);
+        });
+    }
+
+    private void addTableCardClickListener() {
+        View bedCardView = findViewById(R.id.table_card_view);  // Assuming you assigned an id to the bed card in activity_home.xml
+        bedCardView.setOnClickListener(v -> {
+            Intent intent = new Intent(HomePage.this, TablesCategoryPage.class);  // Redirect to BedCategoryPage
+            startActivity(intent);
+        });
+    }
+
+    private void addSofaSetCardClickListener() {
+        View bedCardView = findViewById(R.id.sofaset_card_view);  // Assuming you assigned an id to the bed card in activity_home.xml
+        bedCardView.setOnClickListener(v -> {
+            Intent intent = new Intent(HomePage.this, SofaSetsCategoryPage.class);  // Redirect to BedCategoryPage
+            startActivity(intent);
+        });
     }
 
     public static class FurnitureModel {

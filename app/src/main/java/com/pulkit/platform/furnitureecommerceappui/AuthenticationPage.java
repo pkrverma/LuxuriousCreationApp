@@ -22,10 +22,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class MainActivity extends AppCompatActivity {
+public class AuthenticationPage extends AppCompatActivity {
 
     private EditText usernameEditText;
     private EditText passwordEditText;
@@ -41,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_authentication);
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
 
         // Initialize Firebase Auth
@@ -76,30 +73,30 @@ public class MainActivity extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 FirebaseUser user = auth.getCurrentUser();
 
-                                // Redirect to Main2Activity after successful login
-                                Intent intent = new Intent(MainActivity.this, Main2Activity.class);
+                                // Redirect to HomePage after successful login
+                                Intent intent = new Intent(AuthenticationPage.this, HomePage.class);
                                 startActivity(intent);
-                                finish(); // Close MainActivity if you don't want to return to it
+                                finish(); // Close AuthenticationPage if you don't want to return to it
                             } else {
-                                Toast.makeText(MainActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(AuthenticationPage.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
                             }
                         });
             } else {
-                Toast.makeText(MainActivity.this, "Please fill in all fields.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AuthenticationPage.this, "Please fill in all fields.", Toast.LENGTH_SHORT).show();
             }
         });
 
         // Register Button
         registerButton.setOnClickListener(view -> {
             // Navigate to Registration Activity
-            Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
+            Intent intent = new Intent(AuthenticationPage.this, RegisterPage.class);
             startActivity(intent);
         });
 
-        // Reset Password (now redirects to ForgetPasswordActivity)
+        // Reset Password (now redirects to ForgetPasswordPage)
         resetPasswordTextView.setOnClickListener(view -> {
             // Start Forget Password Activity
-            Intent intent = new Intent(MainActivity.this, ForgetPasswordActivity.class);
+            Intent intent = new Intent(AuthenticationPage.this, ForgetPasswordPage.class);
             startActivity(intent);
         });
     }
@@ -128,12 +125,12 @@ public class MainActivity extends AppCompatActivity {
                     .addOnCompleteListener(this, task -> {
                         if (task.isSuccessful()) {
                             FirebaseUser user = auth.getCurrentUser();
-                            // Redirect to Main2Activity after Google sign-in
-                            Intent intent = new Intent(MainActivity.this, Main2Activity.class);
+                            // Redirect to HomePage after Google sign-in
+                            Intent intent = new Intent(AuthenticationPage.this, HomePage.class);
                             startActivity(intent);
-                            finish(); // Close MainActivity if you don't want to return to it
+                            finish(); // Close AuthenticationPage if you don't want to return to it
                         } else {
-                            Toast.makeText(MainActivity.this, "Authentication Failed.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AuthenticationPage.this, "Authentication Failed.", Toast.LENGTH_SHORT).show();
                         }
                     });
         } catch (ApiException e) {

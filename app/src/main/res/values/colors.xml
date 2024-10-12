@@ -6,4 +6,6 @@
     <color name="colorSecondaryBackground">#FFF2F2</color>
     <color name="colorWarning">#eb3b3d</color>
     <color name="colorAccent">#fb7b7b</color>
+    <color name="black">#000000</color>
+    <color name="green">#00ff00</color>
 </resources>
