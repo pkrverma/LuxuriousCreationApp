@@ -49,6 +49,7 @@
                         android:textSize="24sp" />
 
                     <ImageView
+                        android:id="@+id/cart_icon"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:layout_alignParentTop="true"
@@ -383,7 +384,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:columnCount="2"
-                    android:padding="16dp">
+                    android:padding="16dp"
+                    android:layout_margin="8dp">
+
+                    <!-- Each item in the GridLayout will be dynamically populated using card_model.xml -->
 
                 </GridLayout>
 

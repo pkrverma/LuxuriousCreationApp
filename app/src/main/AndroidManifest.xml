@@ -4,16 +4,15 @@
     package="com.pulkit.platform.furnitureecommerceappui">
 
     <!-- Required permission for AR and camera access -->
-<!--    <uses-permission android:name="android.permission.CAMERA"/>-->
+    <!-- <uses-permission android:name="android.permission.CAMERA"/> -->
 
     <!-- Specifies that the app uses AR features and the camera -->
-<!--    <uses-feature android:name="android.hardware.camera.ar" android:required="false"/>-->
+    <!-- <uses-feature android:name="android.hardware.camera.ar" android:required="false"/> -->
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
@@ -28,7 +27,7 @@
 
         <!-- Favourite Page Activity -->
         <activity
-            android:name="com.pulkit.platform.furnitureecommerceappui.FavouritePage"
+            android:name="com.pulkit.platform.furnitureecommerceappui.FavoritePage"
             android:label=""
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
@@ -96,10 +95,18 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustPan" />
 
-        <!-- Tables Category Page Activity -->
+        <!-- SofaSets Category Page Activity -->
         <activity
             android:name="com.pulkit.platform.furnitureecommerceappui.SofaSetsCategoryPage"
             android:label="SofaSets Category"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <!-- Favorite Model Page Activity -->
+        <activity
+            android:name="com.pulkit.platform.furnitureecommerceappui.FavoriteModelPage"
+            android:label="Favorite Models"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustPan" />

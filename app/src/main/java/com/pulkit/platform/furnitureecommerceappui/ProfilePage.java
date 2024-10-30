@@ -31,9 +31,9 @@ public class ProfilePage extends AppCompatActivity {
 
         FloatingActionButton favoriteButton = findViewById(R.id.favorite_button);
         favoriteButton.setOnClickListener(v -> {
-            Intent intent = new Intent(ProfilePage.this, FavouritePage.class);
+            Intent intent = new Intent(ProfilePage.this, FavoritePage.class);
             startActivity(intent);
-            // Apply only slide-in transition for FavouritePage
+            // Apply only slide-in transition for FavoritePage
             overridePendingTransition(R.anim.slide_in, 0); // No exit transition for ProfilePage
         });
     }

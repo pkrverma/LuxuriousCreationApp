@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.io.Serializable;
+
 public class HomePage extends AppCompatActivity {
 
     private FurnitureModel[] furnitureModels = {
@@ -42,92 +44,84 @@ public class HomePage extends AppCompatActivity {
         profileButton.setOnClickListener(v -> {
             Intent intent = new Intent(HomePage.this, ProfilePage.class);
             startActivity(intent);
-            // Apply only the slide-in transition when navigating to ProfilePage
-            overridePendingTransition(R.anim.slide_in, 0);  // No exit transition for HomePage
+            overridePendingTransition(R.anim.slide_in, 0);
         });
 
         FloatingActionButton favoriteButton = findViewById(R.id.favorite_button);
         favoriteButton.setOnClickListener(v -> {
-            Intent intent = new Intent(HomePage.this, FavouritePage.class);
+            Intent intent = new Intent(HomePage.this, FavoritePage.class);
             startActivity(intent);
-            // Apply only the slide-in transition when navigating to FavouritePage
-            overridePendingTransition(R.anim.slide_in, 0);  // No exit transition for HomePage
+            overridePendingTransition(R.anim.slide_in, 0);
         });
 
-        // Add onClick functionality for the card
-        addBedCardClickListener();
-        addTableCardClickListener();
-        addSofaSetCardClickListener();
+        // Set up category card click listeners with reusable method
+        addCategoryCardClickListener(R.id.bed_card_view, BedsCategoryPage.class);
+        addCategoryCardClickListener(R.id.table_card_view, TablesCategoryPage.class);
+        addCategoryCardClickListener(R.id.sofaset_card_view, SofaSetsCategoryPage.class);
 
+        // Favorite item icon click listener
+        favoriteItemClickListener();
     }
 
     @Override
     public void onBackPressed() {
-        finishAffinity();  // Close all activities and exit the app
-        // Apply both fade-in and fade-out transitions when exiting the app
-        overridePendingTransition(0, R.anim.fade_out);  // Fade-out transition for app exit
+        finishAffinity();
+        overridePendingTransition(0, R.anim.fade_out);
     }
 
     private void addCardView(FurnitureModel model, GridLayout gridLayout) {
+        // Inflate the card view layout from XML
         View cardView = getLayoutInflater().inflate(R.layout.card_model, null);
+
+        // Set image, title, and price for the card view
         ImageView imageView = cardView.findViewById(R.id.card_image);
         imageView.setImageResource(model.getImageResource());
 
         TextView titleTextView = cardView.findViewById(R.id.card_title);
-        titleTextView.setText(model.getName());
+        titleTextView.setText(getString(model.getName()));
 
         TextView priceTextView = cardView.findViewById(R.id.card_price);
         priceTextView.setText("₹" + model.getPrice());
 
-        // Set OnClickListener for cardView to open ModelDetailPage with the selected data
+        // Set OnClickListener for the card to open ModelDetailPage with the selected model data
         cardView.setOnClickListener(v -> {
             Intent intent = new Intent(HomePage.this, ModelDetailPage.class);
-            // Pass the model data to ModelDetailPage
-            intent.putExtra("model_name", model.getName());
-            intent.putExtra("model_price", model.getPrice());
-            intent.putExtra("model_image", model.getImageResource());
-            intent.putExtra("model_description", model.getDescription());
-            intent.putExtra("shop_url", model.getShopUrl());
-            intent.putExtra("ar_url", model.getArUrl());
+            intent.putExtra("furnitureModel", model);  // Pass the entire model as Serializable
             startActivity(intent);
         });
 
+        // Create layout parameters for the card view to fit within GridLayout's columns
         GridLayout.LayoutParams params = new GridLayout.LayoutParams();
-        params.width = 0;
-        params.height = GridLayout.LayoutParams.WRAP_CONTENT;
-        params.setMargins(8, 8, 8, 8);
-        params.columnSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f);
-        cardView.setLayoutParams(params);
+        params.width = 0; // Set width to 0 to allow weight to manage space
+        params.columnSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f); // Span 1 column with equal width distribution
+        params.setMargins(8, 8, 8, 8); // Set margin between cards
 
+        // Apply the layout parameters to the card view and add it to the grid
+        cardView.setLayoutParams(params);
         gridLayout.addView(cardView);
     }
 
-    // Method to handle card click event
-    private void addBedCardClickListener() {
-        View bedCardView = findViewById(R.id.bed_card_view);  // Assuming you assigned an id to the bed card in activity_home.xml
-        bedCardView.setOnClickListener(v -> {
-            Intent intent = new Intent(HomePage.this, BedsCategoryPage.class);  // Redirect to BedCategoryPage
+
+    private void favoriteItemClickListener() {
+        ImageView cartIcon = findViewById(R.id.cart_icon);
+        cartIcon.setOnClickListener(v -> {
+            Intent intent = new Intent(HomePage.this, FavoritePage.class);
             startActivity(intent);
         });
     }
 
-    private void addTableCardClickListener() {
-        View bedCardView = findViewById(R.id.table_card_view);  // Assuming you assigned an id to the bed card in activity_home.xml
-        bedCardView.setOnClickListener(v -> {
-            Intent intent = new Intent(HomePage.this, TablesCategoryPage.class);  // Redirect to BedCategoryPage
-            startActivity(intent);
-        });
+    // Reusable method to set up category card click listeners
+    private void addCategoryCardClickListener(int viewId, Class<?> targetActivity) {
+        View cardView = findViewById(viewId);
+        if (cardView != null) {
+            cardView.setOnClickListener(v -> {
+                Intent intent = new Intent(HomePage.this, targetActivity);
+                startActivity(intent);
+            });
+        }
     }
 
-    private void addSofaSetCardClickListener() {
-        View bedCardView = findViewById(R.id.sofaset_card_view);  // Assuming you assigned an id to the bed card in activity_home.xml
-        bedCardView.setOnClickListener(v -> {
-            Intent intent = new Intent(HomePage.this, SofaSetsCategoryPage.class);  // Redirect to BedCategoryPage
-            startActivity(intent);
-        });
-    }
-
-    public static class FurnitureModel {
+    public static class FurnitureModel implements Serializable {
         private int name;
         private double price;
         private int imageResource;

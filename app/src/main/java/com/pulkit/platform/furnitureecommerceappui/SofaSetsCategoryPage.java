@@ -41,7 +41,7 @@ public class SofaSetsCategoryPage extends AppCompatActivity {
         // Add onClick functionality for the Favorite button
         FloatingActionButton favoriteButton = findViewById(R.id.favorite_button);
         favoriteButton.setOnClickListener(v -> {
-            Intent intent = new Intent(SofaSetsCategoryPage.this, FavouritePage.class);
+            Intent intent = new Intent(SofaSetsCategoryPage.this, FavoritePage.class);
             startActivity(intent);
             overridePendingTransition(R.anim.slide_in, 0);  // No exit transition for BedsCategoryPage
         });
@@ -51,9 +51,9 @@ public class SofaSetsCategoryPage extends AppCompatActivity {
             Intent intent = new Intent(SofaSetsCategoryPage.this, HomePage.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
-            finish(); // Clear FavouritePage from the back stack
+            finish(); // Clear FavoritePage from the back stack
             // Apply only slide-in transition for HomePage
-            overridePendingTransition(R.anim.slide_in, 0); // No exit transition for FavouritePage
+            overridePendingTransition(R.anim.slide_in, 0); // No exit transition for FavoritePage
         });
 
         // Initialize the back button ImageView
