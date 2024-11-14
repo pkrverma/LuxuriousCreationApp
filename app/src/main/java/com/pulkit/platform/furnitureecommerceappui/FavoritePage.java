@@ -2,48 +2,81 @@ package com.pulkit.platform.furnitureecommerceappui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.LinearLayout;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class FavoritePage extends AppCompatActivity {
 
+    private GridView favoriteGridView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_favourite);
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+        setContentView(R.layout.activity_favorite);
 
-        // Apply only slide-in transition for FavoritePage (entry transition only)
-        overridePendingTransition(R.anim.slide_in, 0); // No exit transition for the previous activity
+        // Initialize the GridView for favorite items
+        favoriteGridView = findViewById(R.id.favorite_grid_view);
 
-        LinearLayout homeLinearLayout = findViewById(R.id.home_button);
-        LinearLayout profileLinearLayout = findViewById(R.id.profile_button);
-
-        homeLinearLayout.setOnClickListener(v -> {
-            Intent intent = new Intent(FavoritePage.this, HomePage.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
-            finish(); // Clear FavoritePage from the back stack
-            // Apply only slide-in transition for HomePage
-            overridePendingTransition(R.anim.slide_in, 0); // No exit transition for FavoritePage
-        });
-
-        profileLinearLayout.setOnClickListener(v -> {
-            Intent intent = new Intent(FavoritePage.this, ProfilePage.class);
-            startActivity(intent);
-            // Apply only slide-in transition for ProfilePage
-            overridePendingTransition(R.anim.slide_in, 0); // No exit transition for FavoritePage
-        });
+        // Set the adapter for the GridView
+        favoriteGridView.setAdapter(new FavoriteAdapter());
     }
 
-    @Override
-    public void onBackPressed() {
-        Intent intent = new Intent(FavoritePage.this, HomePage.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
-        finish(); // Finish FavoritePage to remove it from the back stack
-        // Apply only slide-in transition for HomePage
-        overridePendingTransition(R.anim.fade_in, 0); // No exit transition for FavoritePage
+    private class FavoriteAdapter extends BaseAdapter {
+
+        @Override
+        public int getCount() {
+            return FavoritesManager.getInstance().getFavoriteModels().size();
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return FavoritesManager.getInstance().getFavoriteModels().get(position);
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            View cardView;
+            if (convertView == null) {
+                cardView = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_model, parent, false);
+            } else {
+                cardView = convertView;
+            }
+
+            // Get the model for the current position
+            BedsCategoryPage.BedsModel model = (BedsCategoryPage.BedsModel) getItem(position);
+
+            // Set image resource for the model
+            ImageView imageView = cardView.findViewById(R.id.card_image);
+            imageView.setImageResource(model.getImageResource());
+
+            // Set title for the model
+            TextView titleTextView = cardView.findViewById(R.id.card_title);
+            titleTextView.setText(getString(model.getName())); // Use getString to retrieve the name from resources
+
+            // Set price for the model
+            TextView priceTextView = cardView.findViewById(R.id.card_price);
+            priceTextView.setText("₹" + model.getPrice());
+
+            // Set onClick listener to open the detail page
+            cardView.setOnClickListener(v -> {
+                Intent intent = new Intent(FavoritePage.this, ModelDetailPage.class);
+                intent.putExtra("furnitureModel", (CharSequence) model);  // Pass the selected model to the detail page
+                startActivity(intent);
+            });
+
+            return cardView;
+        }
     }
 }

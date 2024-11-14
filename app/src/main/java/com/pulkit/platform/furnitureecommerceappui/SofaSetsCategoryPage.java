@@ -21,52 +21,44 @@ public class SofaSetsCategoryPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sofasets);
 
-        // Apply entry transition only when entering BedsCategoryPage
-        overridePendingTransition(R.anim.slide_in, 0);  // No exit transition for BedsCategoryPage
+        // Apply entry transition
+        overridePendingTransition(R.anim.slide_in, 0);  // No exit transition
 
         GridLayout gridLayout = findViewById(R.id.gridLayout);
 
-        for (SofaSetsModel model : sofasetModels) {
+        for (SofaSetsModel model : sofaSetsModels) {
             addCardView(model, gridLayout);
         }
 
-        // Add onClick functionality for the Profile button
+        // Profile button functionality
         LinearLayout profileButton = findViewById(R.id.profile_button);
         profileButton.setOnClickListener(v -> {
             Intent intent = new Intent(SofaSetsCategoryPage.this, ProfilePage.class);
             startActivity(intent);
-            overridePendingTransition(R.anim.slide_in, 0);  // No exit transition for BedsCategoryPage
+            overridePendingTransition(R.anim.slide_in, 0);
         });
 
-        // Add onClick functionality for the Favorite button
+        // Favorite button functionality
         FloatingActionButton favoriteButton = findViewById(R.id.favorite_button);
         favoriteButton.setOnClickListener(v -> {
             Intent intent = new Intent(SofaSetsCategoryPage.this, FavoritePage.class);
             startActivity(intent);
-            overridePendingTransition(R.anim.slide_in, 0);  // No exit transition for BedsCategoryPage
+            overridePendingTransition(R.anim.slide_in, 0);
         });
 
+        // Home button functionality
         LinearLayout homeLinearLayout = findViewById(R.id.home_button);
         homeLinearLayout.setOnClickListener(v -> {
             Intent intent = new Intent(SofaSetsCategoryPage.this, HomePage.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
-            finish(); // Clear FavoritePage from the back stack
-            // Apply only slide-in transition for HomePage
-            overridePendingTransition(R.anim.slide_in, 0); // No exit transition for FavoritePage
+            finish();
+            overridePendingTransition(R.anim.slide_in, 0);
         });
 
-        // Initialize the back button ImageView
+        // Back button functionality
         ImageView backButton = findViewById(R.id.back_item_button);
-
-        // Set click listener for the back button
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Finish the current activity and go back to the previous one
-                finish();
-            }
-        });
+        backButton.setOnClickListener(v -> finish());
     }
 
     @Override
@@ -74,13 +66,13 @@ public class SofaSetsCategoryPage extends AppCompatActivity {
         Intent intent = new Intent(SofaSetsCategoryPage.this, HomePage.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
-        finish(); // Finish BedsCategoryPage to remove it from the back stack
+        finish();
     }
 
-    private SofaSetsModel[] sofasetModels = {
-            new SofaSetsModel(R.string.model7_name, 7420.00, R.drawable.model7, R.string.model7_desc, "", R.string.model7_arLink),
-            new SofaSetsModel(R.string.model4_name, 11200.00, R.drawable.model4, R.string.model4_desc, "", R.string.model4_arLink),
+    private SofaSetsModel[] sofaSetsModels = {
             new SofaSetsModel(R.string.model3_name, 13540.00, R.drawable.model3, R.string.model3_desc, "", R.string.model3_arLink),
+            new SofaSetsModel(R.string.model4_name, 11200.00, R.drawable.model4, R.string.model4_desc, "", R.string.model4_arLink),
+            new SofaSetsModel(R.string.model8_name, 8420.00, R.drawable.model8, R.string.model8_desc, "", R.string.model8_arLink),
             new SofaSetsModel(R.string.model6_name, 15450.00, R.drawable.model6, R.string.model6_desc, "", R.string.model6_arLink),
             new SofaSetsModel(R.string.model2_name, 13540.00, R.drawable.model2, R.string.model2_desc, "", R.string.model2_arLink),
             new SofaSetsModel(R.string.model5_name, 9569.00, R.drawable.model5, R.string.model5_desc, "", R.string.model5_arLink),
@@ -88,7 +80,7 @@ public class SofaSetsCategoryPage extends AppCompatActivity {
     };
 
     private void addCardView(SofaSetsModel model, GridLayout gridLayout) {
-        // Inflate the card_item_beds layout
+        // Inflate the card_item_section layout
         View cardView = getLayoutInflater().inflate(R.layout.card_item_section, null);
 
         // Set furniture image
@@ -97,23 +89,17 @@ public class SofaSetsCategoryPage extends AppCompatActivity {
 
         // Set heart icon click functionality
         ImageView heartIcon = cardView.findViewById(R.id.heart_item_icon);
-
-        // Add a boolean variable to track the favorite state
-        final boolean[] isFavorite = {false}; // Initially set to not favorite
+        final boolean[] isFavorite = {false}; // Track the favorite state
 
         heartIcon.setOnClickListener(v -> {
             if (isFavorite[0]) {
-                // If it is currently favorite, set it to unfavorite
-                heartIcon.setImageResource(R.drawable.favorite_outline); // Change the icon to unfavorite (unfilled heart)
+                heartIcon.setImageResource(R.drawable.favorite_outline); // Change to unfavorite icon
                 Toast.makeText(SofaSetsCategoryPage.this, "Removed from favorites", Toast.LENGTH_SHORT).show();
             } else {
-                // If it is currently unfavorite, set it to favorite
-                heartIcon.setImageResource(R.drawable.favorite_filled); // Change the icon to favorite (filled heart)
+                heartIcon.setImageResource(R.drawable.favorite_filled); // Change to favorite icon
                 Toast.makeText(SofaSetsCategoryPage.this, "Added to favorites", Toast.LENGTH_SHORT).show();
             }
-
-            // Toggle the favorite state
-            isFavorite[0] = !isFavorite[0];
+            isFavorite[0] = !isFavorite[0]; // Toggle favorite state
         });
 
         // Set furniture title
@@ -124,14 +110,14 @@ public class SofaSetsCategoryPage extends AppCompatActivity {
         TextView descriptionTextView = cardView.findViewById(R.id.card_item_description);
         descriptionTextView.setText(getString(model.getDescription()));
 
+        // Set price
         TextView priceTextView = cardView.findViewById(R.id.card_item_price);
         priceTextView.setText("₹" + model.getPrice());
 
         // Set AR view button click
         Button viewInARButton = cardView.findViewById(R.id.view_in_ar_item_button);
         viewInARButton.setOnClickListener(v -> {
-            // Fetch AR link from string resources
-            String arUrl = getString(model.getArUrl());  // Assuming arUrl is an integer string resource ID
+            String arUrl = getString(model.getArUrl());
             if (arUrl != null && !arUrl.isEmpty()) {
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(arUrl));
                 startActivity(intent);
@@ -146,12 +132,26 @@ public class SofaSetsCategoryPage extends AppCompatActivity {
             Toast.makeText(SofaSetsCategoryPage.this, "Added to cart", Toast.LENGTH_SHORT).show();
         });
 
+        // Set click listener to navigate to ModelDetailPage
+        cardView.setOnClickListener(v -> {
+            Intent intent = new Intent(SofaSetsCategoryPage.this, ModelDetailPage.class);
+            intent.putExtra("imageResId", model.getImageResource());
+            intent.putExtra("modelName", getString(model.getName()));
+            intent.putExtra("price", "₹" + model.getPrice());
+            intent.putExtra("shopName", model.getShopUrl());
+            intent.putExtra("rating", "4.5"); // You can set this based on your model or remove it
+            intent.putExtra("description", getString(model.getDescription()));
+            intent.putExtra("arLink", getString(model.getArUrl()));
+            startActivity(intent);
+            overridePendingTransition(R.anim.slide_in, 0); // Transition animation
+        });
+
         // Define layout parameters for the card view
         GridLayout.LayoutParams params = new GridLayout.LayoutParams();
         params.width = 0;
         params.height = GridLayout.LayoutParams.WRAP_CONTENT;
         params.setMargins(16, 16, 16, 16);
-        params.columnSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f);  // Set equal width for columns
+        params.columnSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f);
         cardView.setLayoutParams(params);
 
         // Add the card to the GridLayout

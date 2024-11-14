@@ -3,11 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.pulkit.platform.furnitureecommerceappui">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
     <!-- Required permission for AR and camera access -->
-    <!-- <uses-permission android:name="android.permission.CAMERA"/> -->
+<!--    <uses-permission android:name="android.permission.CAMERA" />-->
 
     <!-- Specifies that the app uses AR features and the camera -->
-    <!-- <uses-feature android:name="android.hardware.camera.ar" android:required="false"/> -->
+<!--    <uses-feature android:name="android.hardware.camera.ar" android:required="false" />-->
 
     <application
         android:allowBackup="true"
@@ -17,42 +20,10 @@
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
 
-        <!-- Model Detail Activity -->
-        <activity
-            android:name="com.pulkit.platform.furnitureecommerceappui.ModelDetailPage"
-            android:label=""
-            android:screenOrientation="portrait"
-            android:theme="@style/MyAppTheme"
-            android:windowSoftInputMode="stateHidden|adjustPan" />
-
-        <!-- Favourite Page Activity -->
-        <activity
-            android:name="com.pulkit.platform.furnitureecommerceappui.FavoritePage"
-            android:label=""
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden|adjustPan" />
-
-        <!-- Profile Page Activity -->
-        <activity
-            android:name="com.pulkit.platform.furnitureecommerceappui.ProfilePage"
-            android:label=""
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden|adjustPan" />
-
-        <!-- Home Page Activity -->
-        <activity
-            android:name="com.pulkit.platform.furnitureecommerceappui.HomePage"
-            android:label=""
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden|adjustPan" />
-
-        <!-- Main Activity with android:exported attribute -->
+        <!-- Main Activity -->
         <activity
             android:name="com.pulkit.platform.furnitureecommerceappui.AuthenticationPage"
-            android:label=""
+            android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/MyAppTheme"
             android:windowSoftInputMode="stateHidden|adjustPan"
@@ -63,23 +34,49 @@
             </intent-filter>
         </activity>
 
-        <!-- Register Page Activity -->
+        <!-- Other Activities -->
         <activity
-            android:name=".RegisterPage"
+            android:name="com.pulkit.platform.furnitureecommerceappui.ModelDetailPage"
+            android:label="Model Details"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyAppTheme"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name="com.pulkit.platform.furnitureecommerceappui.FavoritePage"
+            android:label="Favorites"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name="com.pulkit.platform.furnitureecommerceappui.ProfilePage"
+            android:label="Profile"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name="com.pulkit.platform.furnitureecommerceappui.HomePage"
+            android:label="Home"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name="com.pulkit.platform.furnitureecommerceappui.RegisterPage"
             android:label="Register"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustPan" />
 
-        <!-- Forget Password Activity -->
         <activity
-            android:name=".ForgetPasswordPage"
+            android:name="com.pulkit.platform.furnitureecommerceappui.ForgetPasswordPage"
             android:label="Forgot Password"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustPan" />
 
-        <!-- Beds Category Page Activity -->
         <activity
             android:name="com.pulkit.platform.furnitureecommerceappui.BedsCategoryPage"
             android:label="Beds Category"
@@ -87,7 +84,6 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustPan" />
 
-        <!-- Tables Category Page Activity -->
         <activity
             android:name="com.pulkit.platform.furnitureecommerceappui.TablesCategoryPage"
             android:label="Tables Category"
@@ -95,7 +91,6 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustPan" />
 
-        <!-- SofaSets Category Page Activity -->
         <activity
             android:name="com.pulkit.platform.furnitureecommerceappui.SofaSetsCategoryPage"
             android:label="SofaSets Category"
@@ -103,10 +98,9 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustPan" />
 
-        <!-- Favorite Model Page Activity -->
         <activity
-            android:name="com.pulkit.platform.furnitureecommerceappui.FavoriteModelPage"
-            android:label="Favorite Models"
+            android:name="com.pulkit.platform.furnitureecommerceappui.AddCartPage"
+            android:label="Add to Cart Category"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustPan" />

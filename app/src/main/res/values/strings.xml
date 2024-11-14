@@ -3,6 +3,8 @@
     <string name="app_line">Make Your Living Comfortable</string>
     <string name="login">Login</string>
     <string name="letsGo">Let\'s Go</string>
+    <string name="editProfile">Edit Profile Detail</string>
+    <string name="save">Save</string>
     <string name="email">Email Id</string>
     <string name="password">Password</string>
     <string name="register">New User?</string>
@@ -13,16 +15,23 @@
     <string name="reset_link_sent">Send Link</string>
     <string name="reset_msg">Password reset link will be sent on the Email id</string>
 
+    <string name="default_web_client_id">1058953721454-c6kri8ou25abrcnbokj70515qqi6mvec.apps.googleusercontent.com</string>
+
     <string name="chairs">Chairs</string>
+    <string name="chairsCategory">Bed</string>
     <string name="beds">Beds</string>
+    <string name="bedsCategory">Bed</string>
     <string name="tables">Tables</string>
+    <string name="tablesCategory">Bed</string>
     <string name="dining">Dining Set</string>
+    <string name="diningCategory">Bed</string>
     <string name="sofa">Sofa Set</string>
+    <string name="sofaCategory">Bed</string>
 
     <string name="profile_name">Pulkit Verma</string>
     <string name="profile_domain">Aspiring App Developer</string>
 
-    <string name="default_web_client_id">project-1058953721454</string>
+<!--    <string name="default_web_client_id">project-1058953721454</string>-->
     <string name="default_ar_url">https://luxurious-creation.web.app/404.html</string>
     <string name="default_description">Sorry! No Description is found for this item.</string>
     <string name="default_name">Model Error</string>
@@ -58,6 +67,20 @@
     <string name="model7_arLink">https://luxurious-creation.web.app/ar-pages/model7.html</string>
     <string name="model8_arLink">https://luxurious-creation.web.app/ar-pages/model8.html</string>
     <string name="model9_arLink">https://luxurious-creation.web.app/ar-pages/model9.html</string>
+
+    <string name="itemId1">ItemId1</string>
+    <string name="itemId2">ItemId2</string>
+    <string name="itemId3">ItemId3</string>
+    <string name="itemId4">ItemId4</string>
+    <string name="itemId5">ItemId5</string>
+    <string name="itemId6">ItemId6</string>
+    <string name="itemId7">ItemId7</string>
+    <string name="itemId8">ItemId8</string>
+    <string name="itemId9">ItemId9</string>
+
+
+
+
 
 
 

@@ -33,16 +33,7 @@
                         android:scaleType="centerCrop"
                         android:src="@drawable/errormsg" />
 
-    <!--                <ImageView-->
-    <!--                    android:id="@+id/back_button"-->
-    <!--                    android:layout_width="wrap_content"-->
-    <!--                    android:layout_height="wrap_content"-->
-    <!--                    android:layout_alignParentStart="true"-->
-    <!--                    android:layout_alignParentTop="true"-->
-    <!--                    android:layout_marginTop="16dp"-->
-    <!--                    android:padding="8dp"-->
-    <!--                    android:src="@drawable/back_button_black" />-->
-
+                    <!-- Back Button -->
                     <ImageView
                         android:id="@+id/back_button"
                         android:layout_width="wrap_content"
@@ -51,20 +42,20 @@
                         android:contentDescription="Back"
                         android:padding="8dp"
                         android:layout_alignParentStart="true"
-                        android:layout_alignParentTop="true"
-                        android:layout_gravity="start"
-                        android:layout_centerVertical="false" />
+                        android:layout_alignParentTop="true" />
 
-                    <ImageView
-                        android:id="@+id/heart_icon"
-                        android:layout_width="37dp"
-                        android:layout_height="37dp"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentBottom="true"
-                        android:layout_margin="16dp"
-                        android:src="@drawable/favorite_outline" />
+                    <!-- Favorite Icon -->
+<!--                    <ImageView-->
+<!--                        android:id="@+id/heart_icon"-->
+<!--                        android:layout_width="37dp"-->
+<!--                        android:layout_height="37dp"-->
+<!--                        android:layout_alignParentEnd="true"-->
+<!--                        android:layout_alignParentBottom="true"-->
+<!--                        android:layout_margin="16dp"-->
+<!--                        android:src="@drawable/favorite_outline" />-->
                 </RelativeLayout>
 
+                <!-- Model Details -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -117,8 +108,9 @@
                             android:gravity="right"
                             android:orientation="vertical">
 
-                            <!-- Shop Text (Optional) -->
+                            <!-- Shop Text -->
                             <TextView
+                                android:id="@+id/shop_text"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="4dp"
@@ -158,17 +150,17 @@
                     android:textColor="#444444"
                     android:textSize="16sp" />
 
-                <!-- Buy Now Button -->
+                <!-- Buy Now and View in AR Buttons -->
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:gravity="center"
                     android:orientation="horizontal">
+
                     <Button
                         android:id="@+id/buyNow_button"
                         android:layout_width="130dp"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
                         android:layout_margin="16dp"
                         android:background="@drawable/buttonshape_t1"
                         android:fontFamily="@font/lora"
@@ -177,12 +169,10 @@
                         android:textColor="#ffffff"
                         android:textSize="18sp" />
 
-                    <!-- View in AR Button -->
                     <Button
                         android:id="@+id/viewAr_button"
                         android:layout_width="130dp"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
                         android:layout_margin="16dp"
                         android:background="@drawable/buttonshape_t1"
                         android:fontFamily="@font/lora"
@@ -262,4 +252,3 @@
         </LinearLayout>
     </RelativeLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
-

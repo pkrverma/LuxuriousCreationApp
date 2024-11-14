@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/model1" />
+            android:src="@drawable/errormsg" /> <!-- Added content description -->
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -32,10 +32,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/lora"
-                android:text="Chair"
+                android:text="Model Name"
                 android:textColor="#FFFFFF"
                 android:textSize="14sp"
-                android:textStyle="bold" />
+                android:textStyle="bold" /> <!-- Added content description -->
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -50,18 +50,10 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/lora"
-                    android:text="₹2859"
+                    android:text="₹XXXX"
                     android:textColor="#FFFFFF"
                     android:textSize="12sp"
-                    android:textStyle="bold" />
-
-                <ImageView
-                    android:id="@+id/card_favorite_icon"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginStart="8dp"
-                    android:src="@drawable/favorite_outline"
-                    android:visibility="gone" />
+                    android:textStyle="bold" /> <!-- Added content description -->
             </LinearLayout>
 
         </LinearLayout>

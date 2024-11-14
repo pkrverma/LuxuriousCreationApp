@@ -119,10 +119,28 @@
                             android:textColorHint="#FFB3B3B3">
 
                             <EditText
+                                android:id="@+id/name"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:hint="Enter Your Name"
+                                android:inputType="textEmailAddress"
+                                android:drawablePadding="16dp"
+                                android:textColor="@android:color/black"
+                                android:textSize="16sp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="16dp"
+                            android:textColorHint="#FFB3B3B3">
+
+                            <EditText
                                 android:id="@+id/email"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:hint="Enter your Email"
+                                android:hint="Enter Your Email"
                                 android:inputType="textEmailAddress"
                                 android:drawablePadding="16dp"
                                 android:textColor="@android:color/black"

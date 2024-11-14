@@ -14,16 +14,18 @@ import java.io.Serializable;
 
 public class HomePage extends AppCompatActivity {
 
-    private FurnitureModel[] furnitureModels = {
-            new FurnitureModel(R.string.model1_name, 950.00, R.drawable.model1, R.string.model1_desc, "", R.string.model1_arLink),
-            new FurnitureModel(R.string.model2_name, 13540.00, R.drawable.model2, R.string.model2_desc, "", R.string.model2_arLink),
-            new FurnitureModel(R.string.model3_name, 11200.00, R.drawable.model3, R.string.model3_desc, "", R.string.model3_arLink),
-            new FurnitureModel(R.string.model4_name, 9569.00, R.drawable.model4, R.string.model4_desc, "", R.string.model4_arLink),
-            new FurnitureModel(R.string.model5_name, 15450.00, R.drawable.model5, R.string.model5_desc, "", R.string.model5_arLink),
-            new FurnitureModel(R.string.model6_name, 2350.00, R.drawable.model6, R.string.model6_desc, "", R.string.model6_arLink),
-            new FurnitureModel(R.string.model7_name, 7420.00, R.drawable.model7, R.string.model7_desc, "", R.string.model7_arLink),
-            new FurnitureModel(R.string.model8_name, 8420.00, R.drawable.model8, R.string.model8_desc, "", R.string.model8_arLink),
-            new FurnitureModel(R.string.model9_name, 14490.00, R.drawable.model9, R.string.model9_desc, "", R.string.model9_arLink)
+    private GridLayout gridLayout;
+
+    private final FurnitureModel[] furnitureModels = {
+            new FurnitureModel(R.string.itemId1, R.string.model1_name, 950.00, R.drawable.model1, R.string.model1_desc, "", R.string.model1_arLink),
+            new FurnitureModel(R.string.itemId2, R.string.model2_name, 13540.00, R.drawable.model2, R.string.model2_desc, "", R.string.model2_arLink),
+            new FurnitureModel(R.string.itemId3, R.string.model3_name, 11200.00, R.drawable.model3, R.string.model3_desc, "", R.string.model3_arLink),
+            new FurnitureModel(R.string.itemId4, R.string.model4_name, 9569.00, R.drawable.model4, R.string.model4_desc, "", R.string.model4_arLink),
+            new FurnitureModel(R.string.itemId5, R.string.model5_name, 15450.00, R.drawable.model5, R.string.model5_desc, "", R.string.model5_arLink),
+            new FurnitureModel(R.string.itemId6, R.string.model6_name, 2350.00, R.drawable.model6, R.string.model6_desc, "", R.string.model6_arLink),
+            new FurnitureModel(R.string.itemId7, R.string.model7_name, 7420.00, R.drawable.model7, R.string.model7_desc, "", R.string.model7_arLink),
+            new FurnitureModel(R.string.itemId8, R.string.model8_name, 8420.00, R.drawable.model8, R.string.model8_desc, "", R.string.model8_arLink),
+            new FurnitureModel(R.string.itemId9, R.string.model9_name, 14490.00, R.drawable.model9, R.string.model9_desc, "", R.string.model9_arLink)
     };
 
     @Override
@@ -31,36 +33,16 @@ public class HomePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        // Apply entry transition only when entering HomePage
+        gridLayout = findViewById(R.id.gridLayout);
         overridePendingTransition(R.anim.slide_in, 0);  // No exit transition for HomePage
 
-        GridLayout gridLayout = findViewById(R.id.gridLayout);
-
         for (FurnitureModel model : furnitureModels) {
-            addCardView(model, gridLayout);
+            addCardView(model);
         }
 
-        LinearLayout profileButton = findViewById(R.id.profile_button);
-        profileButton.setOnClickListener(v -> {
-            Intent intent = new Intent(HomePage.this, ProfilePage.class);
-            startActivity(intent);
-            overridePendingTransition(R.anim.slide_in, 0);
-        });
-
-        FloatingActionButton favoriteButton = findViewById(R.id.favorite_button);
-        favoriteButton.setOnClickListener(v -> {
-            Intent intent = new Intent(HomePage.this, FavoritePage.class);
-            startActivity(intent);
-            overridePendingTransition(R.anim.slide_in, 0);
-        });
-
-        // Set up category card click listeners with reusable method
-        addCategoryCardClickListener(R.id.bed_card_view, BedsCategoryPage.class);
-        addCategoryCardClickListener(R.id.table_card_view, TablesCategoryPage.class);
-        addCategoryCardClickListener(R.id.sofaset_card_view, SofaSetsCategoryPage.class);
-
-        // Favorite item icon click listener
-        favoriteItemClickListener();
+        setupNavigationButtons();
+        setupCategoryCardClickListeners();
+        setupFavoriteItemClickListener();
     }
 
     @Override
@@ -69,24 +51,28 @@ public class HomePage extends AppCompatActivity {
         overridePendingTransition(0, R.anim.fade_out);
     }
 
-    private void addCardView(FurnitureModel model, GridLayout gridLayout) {
-        // Inflate the card view layout from XML
-        View cardView = getLayoutInflater().inflate(R.layout.card_model, null);
+    private void addCardView(FurnitureModel model) {
+        View cardView = getLayoutInflater().inflate(R.layout.card_model, gridLayout, false);
 
-        // Set image, title, and price for the card view
         ImageView imageView = cardView.findViewById(R.id.card_image);
         imageView.setImageResource(model.getImageResource());
 
         TextView titleTextView = cardView.findViewById(R.id.card_title);
-        titleTextView.setText(getString(model.getName()));
+        titleTextView.setText(model.getName());
 
         TextView priceTextView = cardView.findViewById(R.id.card_price);
         priceTextView.setText("₹" + model.getPrice());
 
-        // Set OnClickListener for the card to open ModelDetailPage with the selected model data
+        // Set an OnClickListener on the card to redirect to ModelDetailPage
         cardView.setOnClickListener(v -> {
             Intent intent = new Intent(HomePage.this, ModelDetailPage.class);
-            intent.putExtra("furnitureModel", model);  // Pass the entire model as Serializable
+            intent.putExtra("imageResId", model.getImageResource()); // Change to match what ModelDetailPage expects
+            intent.putExtra("modelName", getString(model.getName())); // Use getString to get actual name
+            intent.putExtra("price", "₹" + model.getPrice()); // Format price
+            intent.putExtra("shopName", model.getShopUrl()); // Assuming you want to show the shop URL here
+            intent.putExtra("rating", "4.5"); // Set a default rating or retrieve it
+            intent.putExtra("description", getString(model.getDesc())); // Use getString for description
+            intent.putExtra("arLink", getString(model.getArUrl())); // Use getString for AR link
             startActivity(intent);
         });
 
@@ -96,62 +82,86 @@ public class HomePage extends AppCompatActivity {
         params.columnSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f); // Span 1 column with equal width distribution
         params.setMargins(8, 8, 8, 8); // Set margin between cards
 
-        // Apply the layout parameters to the card view and add it to the grid
         cardView.setLayoutParams(params);
         gridLayout.addView(cardView);
     }
 
+    private void setupNavigationButtons() {
+        LinearLayout profileButton = findViewById(R.id.profile_button);
+        profileButton.setOnClickListener(v -> {
+            startActivity(new Intent(HomePage.this, ProfilePage.class));
+            overridePendingTransition(R.anim.slide_in, 0);
+        });
 
-    private void favoriteItemClickListener() {
-        ImageView cartIcon = findViewById(R.id.cart_icon);
-        cartIcon.setOnClickListener(v -> {
-            Intent intent = new Intent(HomePage.this, FavoritePage.class);
-            startActivity(intent);
+        FloatingActionButton favoriteButton = findViewById(R.id.favorite_button);
+        favoriteButton.setOnClickListener(v -> {
+            startActivity(new Intent(HomePage.this, FavoritePage.class));
+            overridePendingTransition(R.anim.slide_in, 0);
         });
     }
 
-    // Reusable method to set up category card click listeners
-    private void addCategoryCardClickListener(int viewId, Class<?> targetActivity) {
+    private void setupFavoriteItemClickListener() {
+        ImageView cartIcon = findViewById(R.id.cart_icon);
+        cartIcon.setOnClickListener(v -> {
+            startActivity(new Intent(HomePage.this, AddCartPage.class));
+        });
+    }
+
+    private void setupCategoryCardClickListeners() {
+        addCategoryCardClickListener(R.id.bed_card_view, "Beds", BedsCategoryPage.class);
+        addCategoryCardClickListener(R.id.table_card_view, "Tables", TablesCategoryPage.class);
+        addCategoryCardClickListener(R.id.sofaset_card_view, "Sofa Sets", SofaSetsCategoryPage.class);
+    }
+
+    private void addCategoryCardClickListener(int viewId, String category, Class<?> targetActivity) {
         View cardView = findViewById(viewId);
         if (cardView != null) {
             cardView.setOnClickListener(v -> {
                 Intent intent = new Intent(HomePage.this, targetActivity);
+                intent.putExtra("CATEGORY", category);  // Pass the selected category
                 startActivity(intent);
             });
         }
     }
 
+
     public static class FurnitureModel implements Serializable {
-        private int name;
-        private double price;
-        private int imageResource;
-        private int description;
-        private String shopUrl;
-        private int arUrl;
+        private final int itemId; // Unique ID for each model
+        private final int imageResource;
+        private final int name;
+        private final int desc;
+        private final double price;
+        private final int arLink;
+        private final String shopUrl;
 
-        public FurnitureModel(int name, double price, int imageResource, int description, String shopUrl, int arUrl) {
-            this.name = name;
-            this.price = price;
+        public FurnitureModel(int itemId, int name, double price, int imageResource, int desc, String shopUrl, int arLink) {
+            this.itemId = itemId;
             this.imageResource = imageResource;
-            this.description = description;
+            this.name = name;
+            this.desc = desc;
             this.shopUrl = shopUrl;
-            this.arUrl = arUrl;
+            this.price = price;
+            this.arLink = arLink;
         }
 
-        public int getName() {
-            return name;
-        }
-
-        public double getPrice() {
-            return price;
+        public int getId() {
+            return itemId;
         }
 
         public int getImageResource() {
             return imageResource;
         }
 
-        public int getDescription() {
-            return description;
+        public int getName() {
+            return name;
+        }
+
+        public int getDesc() {
+            return desc;
+        }
+
+        public double getPrice() {
+            return price;
         }
 
         public String getShopUrl() {
@@ -159,7 +169,21 @@ public class HomePage extends AppCompatActivity {
         }
 
         public int getArUrl() {
-            return arUrl;
+            return arLink;
+        }
+
+        // Override equals and hashCode to compare models by itemId
+        @Override
+        public boolean equals(Object obj) {
+            if (this == obj) return true;
+            if (obj == null || getClass() != obj.getClass()) return false;
+            FurnitureModel that = (FurnitureModel) obj;
+            return itemId == that.itemId;
+        }
+
+        @Override
+        public int hashCode() {
+            return Integer.hashCode(itemId);  // Directly return the hash code for the int itemId
         }
     }
 }

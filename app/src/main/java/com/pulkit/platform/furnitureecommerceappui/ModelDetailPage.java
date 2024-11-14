@@ -3,140 +3,104 @@ package com.pulkit.platform.furnitureecommerceappui;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class ModelDetailPage extends AppCompatActivity {
 
-    private boolean isNavigatedFromAnotherPage = false;  // Track if user came from another page
-    private boolean isFavorite = false;  // Track if the model is favorite
+    private ImageView modelImage;
+    private TextView nameText;
+    private TextView priceText;
+    private TextView shopText;
+    private TextView ratingText;
+    private TextView descriptionText;
+    private Button buyNowButton;
+    private Button viewArButton;
+    private ImageView backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle("");
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modeldetail);
 
-        // Retrieve the passed FurnitureModel object
-        HomePage.FurnitureModel model = (HomePage.FurnitureModel) getIntent().getSerializableExtra("furnitureModel");
+        // Initialize views
+        modelImage = findViewById(R.id.model_image);
+        nameText = findViewById(R.id.name_text);
+        priceText = findViewById(R.id.price_text);
+        shopText = findViewById(R.id.shop_text);
+        ratingText = findViewById(R.id.rating_text);
+        descriptionText = findViewById(R.id.description_text);
+        buyNowButton = findViewById(R.id.buyNow_button);
+        viewArButton = findViewById(R.id.viewAr_button);
+        backButton = findViewById(R.id.back_button);
 
-        // Initialize the back button ImageView
-        ImageView backButton = findViewById(R.id.back_button);
-
-        // Check if the page was accessed from a previous activity
+        // Get data from the intent
         Intent intent = getIntent();
-        if (intent.getExtras() != null && intent.getExtras().containsKey("fromOtherPage")) {
-            isNavigatedFromAnotherPage = true;
-        }
+        if (intent != null) {
+            int imageResId = intent.getIntExtra("imageResId", R.drawable.errormsg);
+            String modelName = intent.getStringExtra("modelName");
+            String price = intent.getStringExtra("price");
+            String shopName = intent.getStringExtra("shopName");
+            String rating = intent.getStringExtra("rating");
+            String description = intent.getStringExtra("description");
+            String arLink = intent.getStringExtra("arLink"); // Retrieve the AR link as a string
 
-        // Set click listener for the back button
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                handleBackNavigation();
-            }
-        });
+            // Set the data to views
+            modelImage.setImageResource(imageResId);
+            nameText.setText(modelName);
+            priceText.setText(price);
+            shopText.setText(shopName);
+            ratingText.setText("Rating: " + rating);
+            descriptionText.setText(description);
 
-        if (model != null) {
-            // Set data from the FurnitureModel object
-            ImageView imageView = findViewById(R.id.model_image);
-            imageView.setImageResource(model.getImageResource());
-
-            TextView nameTextView = findViewById(R.id.name_text);
-            nameTextView.setText(model.getName());
-
-            TextView priceTextView = findViewById(R.id.price_text);
-            priceTextView.setText("₹" + model.getPrice());
-
-            TextView descriptionTextView = findViewById(R.id.description_text);
-            descriptionTextView.setText(model.getDescription());
-
-            // Handle the "Buy Now" button click
-            Button buyNowButton = findViewById(R.id.buyNow_button);
+            // Set button listeners
             buyNowButton.setOnClickListener(v -> {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(model.getShopUrl()));
-                startActivity(browserIntent);
+                // Handle Buy Now button click
             });
 
-            // Handle the "View in AR" button click
-            Button viewArButton = findViewById(R.id.viewAr_button);
+            // Set the onClick function for the AR button
             viewArButton.setOnClickListener(v -> {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(String.valueOf(model.getArUrl())));
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(arLink));
                 startActivity(browserIntent);
             });
         }
-
-        // Initialize the favorite button (heart icon)
-        ImageView heartIcon = findViewById(R.id.heart_icon);
-
-        // Set click listener for the heart button
-        heartIcon.setOnClickListener(v -> {
-            if (isFavorite) {
-                heartIcon.setImageResource(R.drawable.favorite_outline);
-                Toast.makeText(ModelDetailPage.this, "Removed from favorites", Toast.LENGTH_SHORT).show();
-            } else {
-                heartIcon.setImageResource(R.drawable.favorite_filled);
-                Toast.makeText(ModelDetailPage.this, "Added to favorites", Toast.LENGTH_SHORT).show();
-            }
-            isFavorite = !isFavorite;
-        });
 
         // Add onClick functionality for the Profile button
-        addProfileButtonFunctionality();
-
-        // Add onClick functionality for the Favorite button
-        addFavoriteButtonFunctionality();
-
-        // Add onClick functionality for the Home button
-        addHomeButtonFunctionality();
-    }
-
-    private void addProfileButtonFunctionality() {
         LinearLayout profileButton = findViewById(R.id.profile_button);
         profileButton.setOnClickListener(v -> {
-            Intent profileIntent = new Intent(ModelDetailPage.this, ProfilePage.class);
-            startActivity(profileIntent);
-            overridePendingTransition(R.anim.slide_in, 0);
+            Intent Navintent = new Intent(ModelDetailPage.this, ProfilePage.class);
+            startActivity(Navintent);
+            overridePendingTransition(R.anim.slide_in, 0);  // No exit transition for BedsCategoryPage
         });
-    }
 
-    private void addFavoriteButtonFunctionality() {
+        // Add onClick functionality for the Favorite button
         FloatingActionButton favoriteButton = findViewById(R.id.favorite_button);
         favoriteButton.setOnClickListener(v -> {
-            Intent favoriteIntent = new Intent(ModelDetailPage.this, FavoritePage.class);
-            startActivity(favoriteIntent);
-            overridePendingTransition(R.anim.slide_in, 0);
+            Intent Navintent = new Intent(ModelDetailPage.this, FavoritePage.class);
+            startActivity(Navintent);
+            overridePendingTransition(R.anim.slide_in, 0);  // No exit transition for BedsCategoryPage
         });
-    }
 
-    private void addHomeButtonFunctionality() {
-        LinearLayout profileButton = findViewById(R.id.home_button);
-        profileButton.setOnClickListener(v -> {
-            Intent homeIntent = new Intent(ModelDetailPage.this, HomePage.class);
-            startActivity(homeIntent);
-            overridePendingTransition(R.anim.slide_in, 0);
+        LinearLayout homeLinearLayout = findViewById(R.id.home_button);
+        homeLinearLayout.setOnClickListener(v -> {
+            Intent Navintent = new Intent(ModelDetailPage.this, HomePage.class);
+            Navintent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(Navintent);
+            finish(); // Clear FavoritePage from the back stack
+            // Apply only slide-in transition for HomePage
+            overridePendingTransition(R.anim.slide_in, 0); // No exit transition for FavoritePage
         });
-    }
 
-    @Override
-    public void onBackPressed() {
-        handleBackNavigation();
-    }
-
-    private void handleBackNavigation() {
-        if (isNavigatedFromAnotherPage) {
-            finish();
-        } else {
-            Intent intent = new Intent(ModelDetailPage.this, HomePage.class);
-            startActivity(intent);
-            finish();
-        }
+        // Back button listener
+        backButton.setOnClickListener(v -> finish()); // Go back to the previous activity
     }
 }

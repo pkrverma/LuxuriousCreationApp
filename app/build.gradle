@@ -10,7 +10,6 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
-
     }
     buildTypes {
         release {
@@ -31,29 +30,27 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'de.hdodenhof:circleimageview:3.0.0'
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
-    implementation 'com.google.firebase:firebase-auth:21.0.1' // Check for the latest version
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'com.github.bumptech.glide:glide:4.16.0'
 
-    // Firebase Authentication
-    implementation 'com.google.firebase:firebase-auth:21.0.3'
+    // Firebase BOM for version management
+    implementation platform('com.google.firebase:firebase-bom:32.0.0')
+
+    // Firebase libraries (versions managed by BOM)
+    implementation 'com.google.firebase:firebase-auth'
+    implementation 'com.google.firebase:firebase-firestore'
+    implementation 'com.google.firebase:firebase-database'
+    implementation 'com.google.firebase:firebase-auth:21.0.1' // Check for the latest version
+    implementation 'com.google.firebase:firebase-firestore:24.0.0' // Check for the latest version
 
     // Google Sign-In
     implementation 'com.google.android.gms:play-services-auth:20.6.0'
 
-    // Firebase BOM (Bill of Materials) for managing versions (optional but recommended)
-    implementation platform('com.google.firebase:firebase-bom:32.0.0')
-
-    // ARCore dependency for AR capabilities
-//    implementation 'com.google.ar:core:1.32.0'
-    // Sceneform dependency (if needed for 3D model viewing)
-//    implementation 'com.google.ar.sceneform:core:1.17.1'
-
+    // ARCore dependencies for AR capabilities
+    implementation 'com.google.ar:core:1.32.0'
     implementation 'com.google.ar.sceneform.ux:sceneform-ux:1.17.1'
-    implementation 'com.google.ar:core:1.32.0' // ARCore
 
-    implementation 'androidx.cardview:cardview:1.0.0' // Make sure this line is included
-
-
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 }

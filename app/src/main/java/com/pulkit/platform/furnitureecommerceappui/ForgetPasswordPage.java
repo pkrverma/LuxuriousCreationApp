@@ -12,7 +12,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class ForgetPasswordPage extends AppCompatActivity {
 
-    private EditText emailEditText, newPasswordEditText, reenterPasswordEditText;
+    private EditText emailEditText;
     private FirebaseAuth firebaseAuth;
 
     @Override
@@ -28,8 +28,6 @@ public class ForgetPasswordPage extends AppCompatActivity {
 
     private void resetPassword() {
         String email = emailEditText.getText().toString().trim();
-        String newPassword = newPasswordEditText.getText().toString().trim();
-        String reenterPassword = reenterPasswordEditText.getText().toString().trim();
 
         if (TextUtils.isEmpty(email)) {
             emailEditText.setError("Email is required");

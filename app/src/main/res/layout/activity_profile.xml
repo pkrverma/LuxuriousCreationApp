@@ -39,34 +39,87 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/profile_image"
-                    android:layout_width="84dp"
-                    android:layout_height="84dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:src="@drawable/profile_pic" />
-
-                <TextView
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_marginBottom="4dp"
-                    android:fontFamily="@font/lora"
-                    android:text="@string/profile_name"
-                    android:textColor="#000000"
-                    android:textSize="18sp" />
+                    android:orientation="horizontal">
 
-                <TextView
+                    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/profile_image"
+                        android:layout_width="84dp"
+                        android:layout_height="84dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:src="@drawable/default_profile" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/profile_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="16dp"
+                            android:layout_marginBottom="4dp"
+                            android:fontFamily="@font/lora"
+                            android:text="Unknown User"
+                            android:textColor="#000000"
+                            android:textSize="24sp" />
+
+                        <TextView
+                            android:id="@+id/profile_description"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="16dp"
+                            android:fontFamily="@font/lora"
+                            android:text="@string/profile_domain"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/profile_contact"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="16dp"
+                            android:fontFamily="@font/lora"
+                            android:text="+9162072XXXX2"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/profile_email"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="16dp"
+                            android:fontFamily="@font/lora"
+                            android:text="defaultuser@gmail.com"
+                            android:textSize="16sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/editProfileButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginRight="16dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="0dp"
+                    android:background="@drawable/buttonshape_t2"
                     android:fontFamily="@font/lora"
-                    android:text="@string/profile_domain"
+                    android:text="@string/editProfile"
+                    android:textAllCaps="false"
+                    android:textColor="#ffffff"
                     android:textSize="14sp" />
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -160,7 +213,7 @@
                                 android:layout_height="40dp"
                                 android:layout_marginTop="8dp"
                                 android:layout_marginBottom="8dp"
-                                android:src="@drawable/chair_light_orange_bg" />
+                                android:src="@drawable/chairicon" />
 
 
                             <TextView
@@ -197,7 +250,7 @@
                                 android:layout_height="40dp"
                                 android:layout_marginTop="8dp"
                                 android:layout_marginBottom="8dp"
-                                android:src="@drawable/lamp_light_gray_bg" />
+                                android:src="@drawable/bedicon" />
 
 
                             <TextView
@@ -205,7 +258,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="16dp"
                                 android:fontFamily="@font/lora"
-                                android:text="Best Lamps"
+                                android:text="Best Beds"
                                 android:textColor="#3C3C3C"
                                 android:textSize="16sp" />
 
@@ -241,11 +294,11 @@
                             android:orientation="vertical">
 
                             <ImageView
-                                android:layout_width="40dp"
+                                android:layout_width="31dp"
                                 android:layout_height="40dp"
                                 android:layout_marginTop="8dp"
                                 android:layout_marginBottom="8dp"
-                                android:src="@drawable/chair_light_gray_bg" />
+                                android:src="@drawable/sofaicon" />
 
 
                             <TextView
@@ -253,7 +306,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="16dp"
                                 android:fontFamily="@font/lora"
-                                android:text="Best Chairs"
+                                android:text="Best Sofas"
                                 android:textColor="#3C3C3C"
                                 android:textSize="16sp" />
 
@@ -282,7 +335,7 @@
                                 android:layout_height="40dp"
                                 android:layout_marginTop="8dp"
                                 android:layout_marginBottom="8dp"
-                                android:src="@drawable/plant_light_blue_bg" />
+                                android:src="@drawable/tableicon" />
 
 
                             <TextView
@@ -290,7 +343,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="16dp"
                                 android:fontFamily="@font/lora"
-                                android:text="Plant Choice"
+                                android:text="Best Table"
                                 android:textColor="#3C3C3C"
                                 android:textSize="16sp" />
 
